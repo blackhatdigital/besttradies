@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <h2>Personal Profile</h2>
-  
+
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
@@ -15,6 +15,10 @@
     <%= f.text_field :lastname %>
   </div>
 
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
 
   <div class="field">
     <%= f.label :dob %><br />

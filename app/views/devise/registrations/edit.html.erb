@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <h2>Personal Profile</h2>
-
+  <%= image_tag @user.avatar.url(:medium) %>
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
@@ -13,6 +13,11 @@
     <div class="field">
     <%= f.label :lastname %><br />
     <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="field">

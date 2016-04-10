@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :avatar
     devise_parameter_sanitizer.for(:sign_up) << :firstname
     devise_parameter_sanitizer.for(:sign_up) << :lastname
     devise_parameter_sanitizer.for(:sign_up) << :dob
@@ -23,20 +24,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :abn
     devise_parameter_sanitizer.for(:sign_up) << :price
 
-    devise_parameter_sanitizer.for(:account_update ) << :firstname
-    devise_parameter_sanitizer.for(:account_update ) << :lastname
-    devise_parameter_sanitizer.for(:account_update ) << :dob
-    devise_parameter_sanitizer.for(:account_update ) << :bio
-    devise_parameter_sanitizer.for(:account_update ) << :skills
-    devise_parameter_sanitizer.for(:account_update ) << :address
-    devise_parameter_sanitizer.for(:account_update ) << :city
-    devise_parameter_sanitizer.for(:account_update ) << :state
-    devise_parameter_sanitizer.for(:account_update ) << :postcode
-    devise_parameter_sanitizer.for(:account_update ) << :car
-    devise_parameter_sanitizer.for(:account_update ) << :equipment
-    devise_parameter_sanitizer.for(:account_update ) << :whitecard
-    devise_parameter_sanitizer.for(:account_update ) << :abn
-    devise_parameter_sanitizer.for(:account_update ) << :price
+    devise_parameter_sanitizer.for(:account_update) << :avatar
+    devise_parameter_sanitizer.for(:account_update) << :firstname
+    devise_parameter_sanitizer.for(:account_update) << :lastname
+    devise_parameter_sanitizer.for(:account_update) << :dob
+    devise_parameter_sanitizer.for(:account_update) << :bio
+    devise_parameter_sanitizer.for(:account_update) << :skills
+    devise_parameter_sanitizer.for(:account_update) << :address
+    devise_parameter_sanitizer.for(:account_update) << :city
+    devise_parameter_sanitizer.for(:account_update) << :state
+    devise_parameter_sanitizer.for(:account_update) << :postcode
+    devise_parameter_sanitizer.for(:account_update) << :car
+    devise_parameter_sanitizer.for(:account_update) << :equipment
+    devise_parameter_sanitizer.for(:account_update) << :whitecard
+    devise_parameter_sanitizer.for(:account_update) << :abn
+    devise_parameter_sanitizer.for(:account_update) << :price
 
   end
 
