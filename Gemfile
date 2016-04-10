@@ -15,6 +15,7 @@ gem 'devise'
 gem "paperclip", "~> 5.0.0.beta1"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'byebug'
