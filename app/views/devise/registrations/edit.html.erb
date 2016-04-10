@@ -4,7 +4,9 @@
   <%= devise_error_messages! %>
 
   <h2>Personal Profile</h2>
+  
   <%= image_tag @user.avatar.url(:medium) %>
+
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
