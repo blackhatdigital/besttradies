@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   get 'pages/privacy'
 
-  resources :jobs
+  resources :jobs do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

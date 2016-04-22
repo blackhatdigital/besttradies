@@ -17,6 +17,10 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 	end
 
+	def search
+		@jobs = Job.search(params).order("created_at DESC").page(params[:page]).per(25)
+	end
+
 	private
 
 	def job_params
