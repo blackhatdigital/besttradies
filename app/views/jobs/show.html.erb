@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1><%= @job.name %></h1>
+		<div>Job Location: <%= @job.location %></div>
+		<div>Job posted on: <%= @job.created_at.strftime("%d of %B %Y") %></div>
+	</div>
+	<div class="col-md-3">
+		<div><%= @job.budget %></div>
+	</div>
+	<div class="col-md-9">
+		<p><%= @job.description %></p>
+	</div>
+</div>

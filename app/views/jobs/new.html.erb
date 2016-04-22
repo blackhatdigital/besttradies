@@ -1,0 +1,26 @@
+New Job
+
+<%= form_for @job do |f| %>
+<div class="row ">
+	<div class="col-md-12 form-group">
+		<%= f.text_field :name, class: "form-control", placeholder: "Job Title" %>
+	</div>
+	<div class="col-md-12 form-group">
+		<%= f.text_area :description, class: "form-control", placeholder: "Describe your job" %>
+	</div>
+	<div class="col-md-6 col-sm-12 form-group">
+		<%= f.text_field :location, class: "form-control", placeholder: "Where is the job?" %>
+	</div>
+	<div class="col-md-6 col-sm-12 form-group">
+		 <div class="input-group">
+			<div class="input-group-addon">$</div>
+				<%= f.text_field :budget, class: "form-control", placeholder: "What is your budget?" %>
+			<div class="input-group-addon">.00</div>
+		 </div>
+	</div>
+	<div class="col-md-12 form-group">
+		<%= f.submit class: "btn btn_primary input-lg" %>
+	</div>
+</div>
+<% end %>
+

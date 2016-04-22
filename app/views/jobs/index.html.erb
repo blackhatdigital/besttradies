@@ -1,1 +1,17 @@
-Jobs Index
+<% @jobs.each do |job| %>
+
+<div class="row">
+	<div class="col-md-12">
+		<div><%= link_to job.name, job %></div>
+		<div>Created by <%= current_user.firstname %> <%= current_user.lastname %></div>
+		<div><%= job.location %></div>
+		<div><%= job.description %></div>
+		<div><%= job.budget %></div>
+		<div>Job posted on: <%= job.created_at.strftime("%d of %B %Y") %></div>
+		<div><%= link_to "View Job", job, class: "btn btn-primary" %></div>
+
+	</div>
+</div>
+<hr />
+
+<% end %>	
