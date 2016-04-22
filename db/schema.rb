@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410064702) do
+ActiveRecord::Schema.define(version: 20160422203822) do
+
+  create_table "abilities", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "skill_id"
+  end
+
+  add_index "abilities", ["job_id"], name: "index_abilities_on_job_id"
+  add_index "abilities", ["skill_id"], name: "index_abilities_on_skill_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "budget"
+    t.string   "location"
+    t.boolean  "open",             default: true
+    t.integer  "awarded_proposal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+  end
+
+  add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"
+
+  create_table "proposals", force: :cascade do |t|
+    t.integer  "bid"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "job_id"
+  end
+
+  add_index "proposals", ["job_id"], name: "index_proposals_on_job_id"
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
