@@ -17,6 +17,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug'

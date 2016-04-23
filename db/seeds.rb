@@ -9,25 +9,33 @@
 Category.where(name: "Electrician").first_or_create(name: "Electrician")
 Category.where(name: "Construction").first_or_create(name: "Construction")
 Category.where(name: "Chippy").first_or_create(name: "Chippy")
+Category.where(name: "Plumber").first_or_create(name: "Plumber")
+Category.where(name: "Bricky").first_or_create(name: "Bricky")
 
 location = [
-	"Gold Coast","Gold Coast",
-	"Brisbane","Brisbane",
-	"Sydney","Sydney",
-	"Melbourne","Melbourne"
+	"Gold Coast","AU",
+	"Brisbane","AU",
+	"Sydney","AU",
+	"Melbourne","AU",
+	"Perth","AU",
+	"Darwin","AU"
 ]
 
-User.where(email: "bob@example.com").first_or_create(firstname: "Bob", password: "pw")
+User.where(email: "bob@example.com").first_or_create(firstname: "Bob", lastname: "Jane", email: "bob@test.com.au", password: "pw")
+User.where(email: "bob@example.com").first_or_create(firstname: "Mike",lastname: "Bell", email: "mike@test.com.au", password: "pw")
+User.where(email: "bob@example.com").first_or_create(firstname: "Jess",lastname: "Grove", email: "jess@test.com.au", password: "pw")
+User.where(email: "bob@example.com").first_or_create(firstname: "Lis",lastname: "Edgar", email: "lis@test.com.au", password: "pw")
 
-10.times do
+4.times do
 	User.create(email: Faker::Internet.email, password: "pw")
 end	
 
 100.times do
+	sleep 0.25
 	Job.create(name: Faker::Name.title,
 		description: Faker::Lorem.paragraph(2),
 		budget: rand(200..10000),
 		location: location.sample,
-		user_id: 1,
+		user_id: rand(1..4),
 		category_id: rand(1..3))
 end
