@@ -8,10 +8,16 @@ New Job
 	<div class="col-md-12 form-group">
 		<%= f.text_area :description, class: "form-control", placeholder: "Describe your job" %>
 	</div>
-	<div class="col-md-6 col-sm-12 form-group">
-		<%= f.text_field :location, class: "form-control", placeholder: "Where is the job?" %>
+	<div class="col-md-12 form-group">
+		<%= f.text_area :skill_list, rows:3, class: "form-control", placeholder: "Enter any requirements seperated by a comma. Eg: white card, abn, own tools" %>
 	</div>
-	<div class="col-md-6 col-sm-12 form-group">
+	<div class="col-md-4 col-sm-12 form-group">
+		<%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: "form-control", placeholder: "Where is the job?" %>
+	</div>
+	<div class="col-md-4 col-sm-12 form-group">
+		<%= f.text_field :location, class: "form-control", placeholder: "City where the job is needed? eg: Brisbane" %>
+	</div>
+	<div class="col-md-4 col-sm-12 form-group">
 		 <div class="input-group">
 			<div class="input-group-addon">$</div>
 				<%= f.text_field :budget, class: "form-control", placeholder: "What is your budget?" %>
