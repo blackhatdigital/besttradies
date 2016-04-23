@@ -25,7 +25,23 @@
 				</ul>
 			</div>
 			<hr />
-			<div>
+
+			<% if @awarded_proposal.present? %>
+				<h2>Awarded Proposal</h2>
+				<div class="row">
+					<div class="col-md-9">
+						<%= @awarded_proposal.user%>
+						<%= @awarded_proposal.description %><br />
+						<small>Posted on: <%= @awarded_proposal.created_at.strftime("%d of %B %Y") %></small>
+					</div>
+					<div class="col-md-3">
+						<%= number_to_currency(@awarded_proposal.bid) %>
+					</div>
+				</div>
+					<hr />	
+			<% end %>
+			
+			
 			<% if @proposals.present? %>
 				<% @proposals.each do |proposal| %>
 					<div class="row">
@@ -37,6 +53,8 @@
 						<div class="col-md-3">
 							<%= number_to_currency(proposal.bid) %>
 							<%= form_for @job, method: :put do |f| %>
+								<%= f.hidden_field :awarded_proposal, value: proposal.id %>
+								<%= f.hidden_field :open, value: false %>
 								<%= f.submit "Award Job", class: "btn btn-success" %>
 							<% end %>
 						</div>
@@ -45,7 +63,7 @@
 					<hr />	
 				<% end %>
 			<% end %>
-			</div>
+			
 
 		</div>
 		<div class="col-md-3">

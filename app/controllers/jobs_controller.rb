@@ -16,6 +16,14 @@ class JobsController < ApplicationController
 	def show
 		@job = Job.find(params[:id])
 		@proposals = @job.proposals.order("created_at DESC")
+		@awarded_proposal = Proposal.where(id: @job.awarded_proposal).first
+	end
+
+	def update
+		@job = Job.find(params[:id])
+		@job.update(job_params)
+		redirect_to @job
+
 	end
 
 	def search
@@ -25,6 +33,6 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list)
+		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal)
 	end	
 end
