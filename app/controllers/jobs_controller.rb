@@ -13,6 +13,16 @@ class JobsController < ApplicationController
 		redirect_to @job
 	end
 
+	def edit
+		@job = Job.find(params[:id])
+	end
+
+	def destroy
+		@job = Job.find(params[:id])
+		@job.destroy
+		redirect_to :myjobs
+	end
+
 	def show
 		@job = Job.find(params[:id])
 		@proposals = @job.proposals.order("created_at DESC")
@@ -23,7 +33,10 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 		@job.update(job_params)
 		redirect_to @job
+	end
 
+	def myjobs
+		@jobs = Job.where(user_id: current_user).order("created_at DESC")
 	end
 
 	def search

@@ -1,0 +1,35 @@
+
+<div class="container">
+Edit Job
+
+	<%= form_for @job do |f| %>
+	<div class="row ">
+		<div class="col-md-12 form-group">
+			<%= f.text_field :name, class: "form-control", placeholder: "Job Title" %>
+		</div>
+		<div class="col-md-12 form-group">
+			<%= f.text_area :description, class: "form-control", placeholder: "Describe your job" %>
+		</div>
+		<div class="col-md-12 form-group">
+			<%= f.text_area :skill_list, rows:3, class: "form-control", placeholder: "Enter any requirements seperated by a comma. Eg: white card, abn, own tools" %>
+		</div>
+		<div class="col-md-4 col-sm-12 form-group">
+			<%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: "form-control", placeholder: "Where is the job?" %>
+		</div>
+		<div class="col-md-4 col-sm-12 form-group">
+			<%= f.text_field :location, class: "form-control", placeholder: "City where the job is needed? eg: Brisbane" %>
+		</div>
+		<div class="col-md-4 col-sm-12 form-group">
+			 <div class="input-group">
+				<div class="input-group-addon">$</div>
+					<%= f.text_field :budget, class: "form-control", placeholder: "What is your budget?" %>
+				<div class="input-group-addon">.00</div>
+			 </div>
+		</div>
+		<div class="col-md-12 form-group">
+			<%= f.submit class: "btn btn_primary input-lg" %>
+		</div>
+	</div>
+	<% end %>
+</div>
+
