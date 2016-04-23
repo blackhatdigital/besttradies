@@ -15,6 +15,7 @@ class JobsController < ApplicationController
 
 	def show
 		@job = Job.find(params[:id])
+		@proposals = @job.proposals.order("created_at DESC")
 	end
 
 	def search

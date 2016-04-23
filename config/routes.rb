@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'pages/privacy'
 
   resources :jobs do
+    resource :proposals, except: :index
     collection do
       get :search
     end

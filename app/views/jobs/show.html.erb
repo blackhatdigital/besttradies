@@ -1,16 +1,74 @@
-<div class="row">
-	<div class="col-md-12">
-		<h1><%= @job.name %></h1>
-		<div>Job Location: <%= @job.location %></div>
-		<div>Job posted on: <%= @job.created_at.strftime("%d of %B %Y") %></div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1><%= @job.name %></h1>
+		</div>
 	</div>
-	<div class="col-md-3">
-		<div><%= number_to_currency(@job.budget, precision: 0) %></div>
-	</div>
-	<div class="col-md-6">
-		<p><%= @job.description %></p>
-	</div>
-	<div class="col-md-3">
-	<h2>Proposal</h2>
+	<div class="row">
+		<div class="col-md-3">
+			<div>Job Location: <%= @job.location %></div>
+			<div>Category: <%= @job.category.name %></div>
+			<div>Job posted on: <%= @job.created_at.strftime("%d of %B %Y") %></div>
+			<div><%= number_to_currency(@job.budget, precision: 0) %></div>
+		</div>
+		<div class="col-md-6">
+			<div>
+				<h2>Job Descritpion</h2>
+				<p><%= @job.description %></p>
+				<hr />
+				<h2>Others Requirements</h2>
+				<ul>
+					<% @job.skills.each do |skill| %>
+						<li><%= skill.name %></li>
+					<% end %>
+
+				</ul>
+			</div>
+			<hr />
+			<div>
+			<% if @proposals.present? %>
+				<% @proposals.each do |proposal| %>
+					<div class="row">
+						<div class="col-md-9">
+							<%= proposal.user%>
+							<%= proposal.description %><br />
+							<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
+						</div>
+						<div class="col-md-3">
+							<%= number_to_currency(proposal.bid) %>
+							<%= form_for @job, method: :put do |f| %>
+								<%= f.submit "Award Job", class: "btn btn-success" %>
+							<% end %>
+						</div>
+
+					</div>
+					<hr />	
+				<% end %>
+			<% end %>
+			</div>
+
+		</div>
+		<div class="col-md-3">
+		<strong>Proposal</strong>
+		<div class="row">
+			<div class="col-md-12">
+				<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
+
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">$</div>
+							<%= f.text_field :bid, class: "form-control", placeholder: "What is your bid?" %>
+						<div class="input-group-addon"> per hour</div>
+					</div>				
+				 </div>
+
+				<div class="form-group">
+				<%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What's your sales pitch?" %>
+				</div>
+				<%= f.submit "Submit Sales Pitch", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+		</div>
 	</div>
 </div>
