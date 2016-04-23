@@ -1,27 +1,42 @@
+<div class="container">
 
-<div class="row">
-	<div class="col-md-12 form-group">
-	<%= form_tag search_jobs_path, method: :get do |f| %>
-		<%= text_field_tag :search, nil, placeholder: "Search Jobs Eg: Plumber", class: "form-control" %>
-		<%= submit_tag "Search Jobs", class: "btn btn-primary" %>
-	<% end %>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Advanced Search</h2>
+				<%= form_tag search_jobs_path, method: :get do |f| %>
+					<div class="form-group col-md-5 col-sm-12">
+						<%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name), class: "form-control" %>
+					</div>
+					<div class="form-group col-md-5 col-sm-12">
+						<%= text_field_tag :location, nil, placeholder: "Search Location Eg: Brisbane", class: "form-control" %>
+					</div>
+					<div class="form-group col-md-2 col-sm-12">
+						<%= submit_tag "Search Jobs", class: "btn btn-primary" %>
+					</div>
+				<% end %>
+		</div>
 	</div>
-</div>
-<% @jobs.each do |job| %>
+	<div class="row">
+		<hr />
+		<div class="col-md-12">
+			<% @jobs.each do |job| %>
 
-<div class="row">
-	<div class="col-md-12">
-		<div><%= link_to job.name, job %></div>
-		<div>Created by <%= current_user.firstname %> <%= current_user.lastname %></div>
-		<div><%= job.location %></div>
-		<div><%= job.description %></div>
-		<div><%= job.budget %></div>
-		<div>Job posted on: <%= job.created_at.strftime("%d of %B %Y") %></div>
-		<div><%= link_to "View Job", job, class: "btn btn-primary" %></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div><%= link_to job.name, job %></div>
+					<div>Created by <%= current_user.firstname %> <%= current_user.lastname %></div>
+					<div><%= job.location %></div>
+					<div><%= job.description %></div>
+					<div><%= job.budget %></div>
+					<div>Job posted on: <%= job.created_at.strftime("%d of %B %Y") %></div>
+					<div><%= link_to "View Job", job, class: "btn btn-primary" %></div>
+				</div>
+			</div>
+			<hr />
+
+			<% end %>	
+		</div>
 	</div>
+
+	<%= paginate @jobs %>
 </div>
-<hr />
-
-<% end %>	
-
-<%= paginate @jobs %>

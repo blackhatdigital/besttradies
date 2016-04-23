@@ -13,12 +13,12 @@ Category.where(name: "Plumber").first_or_create(name: "Plumber")
 Category.where(name: "Bricky").first_or_create(name: "Bricky")
 
 location = [
-	"Gold Coast","AU",
-	"Brisbane","AU",
-	"Sydney","AU",
-	"Melbourne","AU",
-	"Perth","AU",
-	"Darwin","AU"
+	"Gold Coast",
+	"Brisbane",
+	"Sydney",
+	"Melbourne",
+	"Perth",
+	"Darwin"
 ]
 
 User.where(email: "bob@example.com").first_or_create(firstname: "Bob", lastname: "Jane", email: "bob@test.com.au", password: "pw")

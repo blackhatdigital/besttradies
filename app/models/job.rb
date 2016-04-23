@@ -9,7 +9,12 @@ class Job < ActiveRecord::Base
 	after_validation :geocode
 
 	def self.search(params)
-		jobs = Job.where("name like ? or description like?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+		if params[:category].present?
+			jobs = Job.where(category_id: params[:category].to_i)
+			jobs = jobs.near(params[:location],20) if params[:location].present?
+		else
+			jobs = Job.where("name like ? or description like?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+		end	
 		jobs
 	end
 end
