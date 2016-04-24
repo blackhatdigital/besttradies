@@ -13,7 +13,7 @@
 		</div>
 		<div class="col-md-6">
 			<div>
-				<h2>Job Descritpion</h2>
+				<h2>Job Description</h2>
 				<p><%= @job.description %></p>
 				<hr />
 				<h2>Others Requirements</h2>
@@ -27,10 +27,13 @@
 			<hr />
 
 			<% if @awarded_proposal.present? %>
-				<h2>Awarded Proposal</h2>
+				<h2>Awarded Job</h2>
 				<div class="row">
-					<div class="col-md-9">
-						<%= @awarded_proposal.user.firstname%> <%= @awarded_proposal.user.firstname%>
+					<div class="col-md-2">
+					<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
+					</div>
+					<div class="col-md-7">
+						<%= @awarded_proposal.user.firstname %> <%= @awarded_proposal.user.firstname %>
 						<%= @awarded_proposal.description %><br />
 						<small>Posted on: <%= @awarded_proposal.created_at.strftime("%d of %B %Y") %></small>
 					</div>
@@ -41,29 +44,16 @@
 					<hr />	
 			<% end %>
 			
-			
-			<% if @proposals.present? %>
-				<% @proposals.each do |proposal| %>
-					<div class="row">
-						<div class="col-md-9">
-							<%= proposal.user.firstname%> <%= proposal.user.firstname%><br />
-							<%= proposal.description %><br />
-							<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
-						</div>
-						<div class="col-md-3">
-						<% if @job.user == current_user && @job.open == true %>
-							<%= number_to_currency(proposal.bid) %>
-							<%= form_for @job, method: :put do |f| %>
-								<%= f.hidden_field :awarded_proposal, value: proposal.id %>
-								<%= f.hidden_field :open, value: false %>
-								<%= f.submit "Award Job", class: "btn btn-success" %>
-							<% end %>
-						<% end %>
-						</div>
-
-					</div>
-					<hr />	
-				<% end %>
+			<% if @job.user != current_user && @job.open == true %>
+				<h4>There are currently <%= @proposals.count %> proposals submitted for this job. These will remain hidden until a winner has been chosen.</h4>
+				<% elsif @job.user != current_user %>
+				<div class="text-center">
+					<h4>This is what you were up against</h4>
+					<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
+				</div>
+				<%= render 'jobs/proposal_loop' %>
+				<% else %>
+				<%= render 'jobs/proposal_loop' %>
 			<% end %>
 			
 

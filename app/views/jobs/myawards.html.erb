@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+	<h1>My Awards</h1>
+	<table class="table table-stripped">
+		<thead>
+			<tr>
+				<th class="text-center">Status</th>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Description</th>
+				<th>Budget</th>
+				<th>Proposals</th>
+				<th>Contact Name</th>
+				<th>Contact Email</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<% @jobs.each do |job| %>
+				<tr>
+					<td>
+						WON
+					</td>
+					<td><%= link_to job.name, job %></td>
+					<td><%= job.category.name %></td>
+					<td><%= job.description %></td>
+					<td><%= number_to_currency(job.budget, precision:0) %></td>
+					<td>You beat <%= job.proposals.count %> other offers</td>
+					<td><%= job.user.firstname%> <%= job.user.lastname%></td>
+					<td><%= job.user.firstname%> <%= job.user.email%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	</div>
+</div>

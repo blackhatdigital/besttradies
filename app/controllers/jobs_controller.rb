@@ -60,6 +60,11 @@ class JobsController < ApplicationController
 		@jobs = Job.where(user_id: current_user).order("created_at DESC")
 	end
 
+
+	def myawards
+		@jobs = Job.where(award_user: current_user.id).order("created_at DESC")
+	end
+
 	def search
 		if params[:category].blank? && params[:search].blank?
 			@jobs = Job.all.order("created_at DESC").page(params[:page]).per(25)
@@ -71,6 +76,6 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal)
+		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal, :award_user)
 	end	
 end

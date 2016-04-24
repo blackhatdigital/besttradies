@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422234008) do
+ActiveRecord::Schema.define(version: 20160424024821) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160422234008) do
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "award_user"
   end
 
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"

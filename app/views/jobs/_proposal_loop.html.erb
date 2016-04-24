@@ -1,0 +1,27 @@
+<% @proposals.each do |proposal| %>
+	<div class="row">
+			<div class="col-md-1">
+			<%= image_tag proposal.user.avatar.url(:thumb), size: "40" %>
+			</div>
+			<div class="col-md-8">
+			<%= proposal.user.firstname%> <%= proposal.user.firstname%><br />
+			
+			<%= proposal.description %><br />
+			
+			<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
+		</div>
+		<div class="col-md-3">
+		<%= number_to_currency(proposal.bid) %>
+		<% if @job.user == current_user && @job.open == true %>
+			<%= form_for @job, method: :put do |f| %>
+				<%= f.hidden_field :awarded_proposal, value: proposal.id %>
+				<%= f.hidden_field :award_user, value: proposal.user_id %>
+				<%= f.hidden_field :open, value: false %>
+				<%= f.submit "Award Job", class: "btn btn-success" %>
+			<% end %>
+		<% end %>
+		</div>
+
+	</div>
+	<hr />	
+<% end %>
