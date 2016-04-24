@@ -7,7 +7,7 @@ class ProposalsController < ApplicationController
 	end
 
 	def proposal_params
-		params.require(:proposal).permit(:bid, :description)
+		params.require(:proposal).permit(:bid, :description, :user_id)
 	end	
 
 end
