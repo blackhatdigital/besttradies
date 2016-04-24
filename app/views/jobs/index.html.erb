@@ -17,16 +17,30 @@
 		</div>
 	</div>
 	<div class="row">
-		<hr />
+		<div class="col-md-12">
+			<h1>Jobs on offer</h1>
+			<div class="pull-right">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">Sort By <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Oldest", jobs_path(sort_by: "oldest") %></li>
+						<li><%= link_to "Newest", jobs_path(sort_by: "newest") %></li>
+						<li><%= link_to "Name", jobs_path(sort_by: "name") %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="row">
 		<div class="col-md-12">
 			<% @jobs.each do |job| %>
-
 			<div class="row">
 				<div class="col-md-12">
 					<div><%= link_to job.name, job %></div>
 					<div>Created by <%= current_user.firstname %> <%= current_user.lastname %></div>
 					<div><%= job.location %></div>
-					<div><%= job.description %></div>
+					<div><%= h truncate(job.description, length:200) %></div>
 					<div><%= job.budget %></div>
 					<div>Job posted on: <%= job.created_at.strftime("%d of %B %Y") %></div>
 					<div><%= link_to "View Job", job, class: "btn btn-primary" %></div>

@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 	def index
-		@jobs = Job.all.order("created_at DESC").page(params[:page]).per(25)
+		@jobs = Job.all.order_list(params[:sort_by]).page(params[:page]).per(25)
 	end
 
 	def new
@@ -40,7 +40,11 @@ class JobsController < ApplicationController
 	end
 
 	def search
+		if params[:category].blank? && params[:search].blank?
+			@jobs = Job.all.order("created_at DESC").page(params[:page]).per(25)
+		else
 		@jobs = Job.search(params).order("created_at DESC").page(params[:page]).per(25)
+		end
 	end
 
 	private
