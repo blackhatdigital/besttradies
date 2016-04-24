@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :search, :show]
+
 	def index
 		@jobs = Job.all.order_list(params[:sort_by]).page(params[:page]).per(25)
 	end
@@ -9,18 +11,33 @@ class JobsController < ApplicationController
 
 	def create
 		@job = Job.new(job_params)
-		@job.save
+		@job.user = current_user
+		if @job.save
 		redirect_to @job
+		else
+			flash[:error] = @job.errors.full_messages.to_sentence
+			render :new
+		end
 	end
 
 	def edit
 		@job = Job.find(params[:id])
+		if current_user != @job.user
+			flash[:error] = "You are not the owner of this job"
+			redirect_to @job
+		end
 	end
 
 	def destroy
 		@job = Job.find(params[:id])
 		@job.destroy
 		redirect_to :myjobs
+
+		if current_user != @job.user
+			flash[:error] = "You are not the owner of this job"
+			redirect_to :myjobs
+		end
+
 	end
 
 	def show
@@ -33,6 +50,10 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 		@job.update(job_params)
 		redirect_to @job
+		if current_user != @job.user
+			flash[:error] = "You are not the owner of this job"
+			redirect_to @job
+		end
 	end
 
 	def myjobs

@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   root 'jobs#index'
 
   devise_for :users
+  get 'myjobs' => 'jobs#myjobs', :as => 'user_root'
 
 end
