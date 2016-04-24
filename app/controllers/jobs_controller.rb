@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-	before_action :authenticate_user!, except: [:index, :search, :show]
+	before_action :authenticate_user!, except: [:index, :search]
 
 	def index
 		@jobs = Job.all.order_list(params[:sort_by]).page(params[:page]).per(25)

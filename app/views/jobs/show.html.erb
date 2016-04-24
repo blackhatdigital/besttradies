@@ -46,13 +46,13 @@
 			
 			<% if @job.user != current_user && @job.open == true %>
 				<h4>There are currently <%= @proposals.count %> proposals submitted for this job. These will remain hidden until a winner has been chosen.</h4>
-				<% elsif @job.user != current_user %>
+			<% elsif @job.user != current_user && @job.open == false %>
 				<div class="text-center">
 					<h4>This is what you were up against</h4>
 					<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
 				</div>
 				<%= render 'jobs/proposal_loop' %>
-				<% else %>
+			<% else %>
 				<%= render 'jobs/proposal_loop' %>
 			<% end %>
 			
