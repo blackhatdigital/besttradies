@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get '/myjobs' => 'jobs#myjobs'
+
   root 'jobs#index'
 
   devise_for :users
