@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  has_many :jobs
-  has_many :proposals
+  has_many :jobs, dependent: :destroy
+  has_many :proposals, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 end

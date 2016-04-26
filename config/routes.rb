@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ratings, except: [:show, :index]
+
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
