@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :ratings, except: [:show, :index]
+  post '/rate' => 'rater#create', :as => 'rate'
+  resources :tradies
 
   get 'pages/home'
   get 'pages/about'

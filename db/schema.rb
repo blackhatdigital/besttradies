@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426044619) do
+ActiveRecord::Schema.define(version: 20160427010811) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20160426044619) do
 
   add_index "abilities", ["job_id"], name: "index_abilities_on_job_id"
   add_index "abilities", ["skill_id"], name: "index_abilities_on_skill_id"
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "avg",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -44,6 +53,14 @@ ActiveRecord::Schema.define(version: 20160426044619) do
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "overall_avg",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.integer  "bid"
     t.text     "description"
@@ -56,13 +73,30 @@ ActiveRecord::Schema.define(version: 20160426044619) do
   add_index "proposals", ["job_id"], name: "index_proposals_on_job_id"
   add_index "proposals", ["user_id"], name: "index_proposals_on_user_id"
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "rating"
-    t.text     "review"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "stars",         null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id"
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id"
+    t.string   "cacheable_type"
+    t.float    "avg",            null: false
+    t.integer  "qty",            null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
   create_table "skills", force: :cascade do |t|
     t.string "name"

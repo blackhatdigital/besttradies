@@ -1,0 +1,23 @@
+<div class="container">
+
+<h1>Profile</h1>
+<p><%= @user.firstname%> <%= @user.lastname%></p>
+<p><%= @user.email%></p>
+
+<p><%= @user.bio%></p>
+
+<hr />
+  <div class="row">
+    <div class="small-2 large-4 columns">
+      <% if current_user %>
+        Skill Rating: <%= rating_for @user, "skill" %>
+        <br>
+        Reliability Score: <%= rating_for @user, "reliability" %>
+        <br>
+        Professionalim Score: <%= rating_for @user, "professionalism" %>
+        <br>
+        Value for Money: <%= rating_for @user, "value" %>
+      <% end %>
+    </div>
+  </div>
+</div>

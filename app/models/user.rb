@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 				    :storage => :dropbox,
 				    :dropbox_credentials => Rails.root.join("config/dropbox.yml")
 
+  ratyrate_rateable 'skill', 'reliability', 'professionalism', 'value'
+
+  ratyrate_rater
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
