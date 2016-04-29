@@ -1,0 +1,44 @@
+ready = ->
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
+
+$(window).load(function(){  
+
+  setTimeout(function(){
+    $(".navbar").animate({top: '20px'});
+     }, 1000);  
+
+
+
+
+  $(".sign_in").click(function() {  
+
+    $(".login-box").show();
+    $(".navbar").animate({top: '-250px'});
+    $(".header-home-text").animate({left: '2200px'});
+
+    setTimeout(function(){
+        $(".login-box").animate({top: '100px'});
+        $(".header-lrg").animate({opacity: '0.5'});
+
+    }, 500);  
+    
+  });
+  
+  $(".closeblur").click(function() { 
+
+    $(".header-lrg").animate({opacity: '1',});   
+    $(".login-box").animate({top: '-550px'}); 
+
+    setTimeout(function(){
+    $(".navbar").animate({top: '20px'});
+     }, 300); 
+
+    setTimeout(function(){
+    $(".header-home-text").animate({left: '0px'});
+     }, 500); 
+
+  });
+
+});

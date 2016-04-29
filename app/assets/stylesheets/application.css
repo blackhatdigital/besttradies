@@ -15,3 +15,10 @@
  *= require_self
  */
 
+ body{
+ 	overflow-x:hidden; 
+ }
+
+.bg-grey{
+	background-color: #e5e5e5
+}

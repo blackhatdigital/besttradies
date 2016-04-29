@@ -4,37 +4,14 @@
   <title>Besttradies</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<ul class="hmenu">
 
-  <% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :get) %>        
-  </li>
-  <li> 
-  <%= link_to('Edit registration', edit_user_registration_path) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>
-  <%= link_to('Register', new_user_registration_path)  %>
-  </li>
-<% end %>
+<%= render 'layouts/headers' %>
+<%= render 'layouts/loginbox' %>
 
-  <%= render 'layouts/login_items' %>
-  <%= link_to "Post a Job", new_job_path %>
-  <div class="container">
-	<div class="row">
-		<div class="col-md-12 form-group">
-		<%= form_tag search_jobs_path, method: :get do |f| %>
-			<%= text_field_tag :search, nil, placeholder: "Search Jobs Eg: Plumber", class: "form-control" %>
-			<%= submit_tag "Search Jobs", class: "btn btn-primary" %>
-		<% end %>
-		</div>
-	</div>
-</ul>
 <%= yield %>
 
 </body>

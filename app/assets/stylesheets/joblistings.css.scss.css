@@ -1,0 +1,87 @@
+.search_results h1{
+	font-size: 3em;
+	color: #1e1e1e;
+	font-family: 'gothambold1';
+	letter-spacing: -1px;
+}
+
+.search_results{
+	margin-top: 50px;
+}
+
+.sort_jobs{
+	padding-top: 20px;
+}
+
+.joblisting-header{
+	background-color: #4D525B;
+	padding: 20px;
+	color: #fff;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+	height: 56px;
+	border-radius: 10px 10px 0px 0px;
+-moz-border-radius: 10px 10px 0px 0px;
+-webkit-border-radius: 10px 10px 0px 0px;
+}
+
+.joblisting {
+	border-bottom:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	padding: 20px 0 20px 0;
+	height: 140px;
+	background-color: #fff;
+	transition: all .3s ease;
+}
+
+.joblisting:hover {
+	background-color: #efefef;
+}
+
+.joblisting-title a, .joblisting-title a:link, .joblisting-title a:visited, .joblisting-title a:active{
+	font-size: 1.5em !important;
+	font-weight: 700;
+	font-family: 'Roboto', sans-serif;
+	color: #0088cf;
+	
+}
+
+.joblisting-title a:hover{
+	color: #17A1E6;
+}
+
+.joblisting-subtitle{
+	font-size: .8em;
+	text-transform: uppercase;
+	color: #a5a5a5;
+}
+
+.joblisting-desc{
+	margin:10px 0;
+	font-size: 1em;
+	line-height: 1.5;
+}
+
+.joblisting-proposals{
+	font-size: 4em;
+	font-weight: 700;
+	font-family: 'Roboto', sans-serif;
+	color: #ccc;
+	padding-top: 10px;
+}
+
+.joblisting-time{
+	padding-top: 40px;
+}
+
+.joblisting-budget{
+	padding-top: 35px;
+	font-size: 1.5em;
+}
+
+
+
+
