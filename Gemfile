@@ -19,6 +19,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
 gem 'geocoder'
 gem 'ratyrate'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
