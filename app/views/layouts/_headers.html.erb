@@ -1,5 +1,17 @@
+<% if current_page? root_path %>
+
 <div class="row">
 	<div class="large_header home">
   		<%= render 'layouts/homeheader' %>
 	</div>
 </div>
+
+<% else %>
+
+<div class="row">
+	<div class="large_header home">
+  		<%= render 'layouts/thinwhite' %>
+	</div>
+</div>
+
+<% end %>

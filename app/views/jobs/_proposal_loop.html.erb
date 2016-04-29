@@ -1,36 +1,46 @@
+
 <% @proposals.each do |proposal| %>
-	<div class="row">
-			<div class="col-md-1">
+	<div class="row job-joblisting">
+		<div class="col-md-1">
 			<%= image_tag proposal.user.avatar.url(:thumb), size: "40" %>
-			</div>
-			<div class="col-md-8">
+		</div>
+		<div class="col-md-7">
 			<%= proposal.user.firstname%> <%= proposal.user.lastname%><br />
 			<% if @job.user == current_user %>
 			<%= proposal.description %><br />
 			<% end %>
 			<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
 		</div>
-		<div class="col-md-3">
-		<%= number_to_currency(proposal.bid) %>
-		<% if @job.user == current_user && @job.open == true %>
-			<%= form_for @job, method: :put do |f| %>
-				<%= f.hidden_field :awarded_proposal, value: proposal.id %>
-				<%= f.hidden_field :award_user, value: proposal.user_id %>
-				<%= f.hidden_field :open, value: false %>
-				<%= f.submit "Award Job", class: "btn btn-success" %>
+		<div class="col-md-4 text-right">
+			<div class="job-joblisting-price">
+				<%= number_to_currency(proposal.bid, precision: 0) %> <small>per hour</small>
+			</div>
+			<% if @job.user == current_user && @job.open == true %>
+				<%= form_for @job, method: :put do |f| %>
+					<%= f.hidden_field :awarded_proposal, value: proposal.id %>
+					<%= f.hidden_field :award_user, value: proposal.user_id %>
+					<%= f.hidden_field :open, value: false %>
+					<%= f.submit "Award Job", class: "btn btn-success" %>
+				<% end %>
 			<% end %>
-		<% end %>
 
-		<% if @job.user == current_user && @job.open == false %>
-			<%= form_for @job, method: :put do |f| %>
-				<%= f.hidden_field :awarded_proposal, value: proposal.id %>
-				<%= f.hidden_field :award_user, value: proposal.user_id %>
-				<%= f.submit "Change Winner", class: "btn btn-success" %>
+			<% if @job.user == current_user && @job.open == false %>
+				<%= form_for @job, method: :put do |f| %>
+					<%= f.hidden_field :awarded_proposal, value: proposal.id %>
+					<%= f.hidden_field :award_user, value: proposal.user_id %>
+					<%= f.submit "Change Winner", class: "btn btn-success" %>
+				<% end %>
 			<% end %>
-		<% end %>
-
 		</div>
-
 	</div>
-	<hr />	
+	
+
+		<% if current_user %>
+		<div class="row job-ratings">
+			<div class="col-md-3">Skill <%= rating_for @awarded_proposal.user, "skill" %></div>
+			<div class="col-md-3">Reliability <%= rating_for @awarded_proposal.user, "reliability" %></div>
+			<div class="col-md-3">Professionalim <%= rating_for @awarded_proposal.user, "professionalism" %></div>
+			<div class="col-md-3">Value for Money <%= rating_for @awarded_proposal.user, "value" %></div>
+		</div>
+		<% end %>
 <% end %>

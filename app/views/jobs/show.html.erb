@@ -1,95 +1,109 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<h1><%= @job.name %></h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<div>Job Location: <%= @job.location %></div>
-			<div>Category: <%= @job.category.name %></div>
-			<div>Job posted on: <%= @job.created_at.strftime("%d of %B %Y") %></div>
-			<div><%= number_to_currency(@job.budget, precision: 0) %></div>
-		</div>
-		<div class="col-md-6">
-			<div>
-				<h2>Job Description</h2>
-				<p><%= @job.description %></p>
-				<hr />
-				<h2>Others Requirements</h2>
-				<ul>
-					<% @job.skills.each do |skill| %>
-						<li><%= skill.name %></li>
-					<% end %>
 
-				</ul>
+<div class="row bg-grey ">
+
+
+		<div class="container job-top">
+		<h1><%= @job.name %></h1>
+		</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+					<div>Job Location: <%= @job.location %></div>
+					<div>Category: <%= @job.category.name %></div>
+					<div>Job posted on: <%= @job.created_at.strftime("%d of %B %Y") %></div>
+					<div><%= number_to_currency(@job.budget, precision: 0) %></div>
 			</div>
-			<hr />
-
-			<% if @awarded_proposal.present? %>
-				<h2>Awarded Job</h2>
-				<div class="row">
-					<div class="col-md-2">
-					<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
-					</div>
-					<div class="col-md-7">
-						<%= @awarded_proposal.user.firstname %> <%= @awarded_proposal.user.firstname %>
-						<%= @awarded_proposal.description %><br />
-						<small>Posted on: <%= @awarded_proposal.created_at.strftime("%d of %B %Y") %></small>
-					</div>
-					<div class="col-md-3">
-						<%= number_to_currency(@awarded_proposal.bid) %>
-					</div>
-				</div>
-					<hr />	
-			<% end %>
-			
-			<% if @job.user != current_user && @job.open == true %>
-				<h4>There are currently <%= @proposals.count %> proposals submitted for this job. These will remain hidden until a winner has been chosen.</h4>
-			<% elsif @job.user != current_user && @job.open == false %>
-				<div class="text-center">
-					<h4>This is what you were up against</h4>
-					<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
-				</div>
-				<%= render 'jobs/proposal_loop' %>
-			<% else %>
-				<%= render 'jobs/proposal_loop' %>
-			<% end %>
-			
-
-		</div>
-		<% if user_signed_in? && @job.user != current_user && @job.open == true %>
-		<div class="col-md-3">
-		<strong>Proposal</strong>
+			<div class="col-md-6">
 			<div class="row">
-				<div class="col-md-12">
-					<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
-						<%= f.hidden_field :user_id, value: current_user.id %>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">$</div>
-									<%= f.text_field :bid, class: "form-control", placeholder: "What is your bid?" %>
-								<div class="input-group-addon"> per hour</div>
-							</div>				
-						 </div>
-					<div class="form-group">
-					<%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What's your sales pitch?" %>
+				<div class="job-cont-top">
+					<h2>Job Description</h2>
+					<p><%= @job.description %></p>
+				</div>
+				<div class="job-cont-med">
+					<h2>Others Requirements</h2>
+					<ul>
+						<% @job.skills.each do |skill| %>
+							<li><%= skill.name %></li>
+						<% end %>
+
+					</ul>
+				</div>
+
+				<% if @awarded_proposal.present? %>
+					<div class="job-cont-award">
+						<h2><span class="glyphicon glyphicon-ok-sign green"></span> Awarded Job</h2>
+						<div class="row">
+							<div class="col-md-2">
+							<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
+							</div>
+							<div class="col-md-7">
+								<div class="job-cont-award-name"><%= link_to @awarded_proposal.user.firstname + " " + @awarded_proposal.user.firstname, trady_path(@awarded_proposal.user.id) %></div>
+								<div class="job-cont-award-sub"><%= time_ago_in_words(@awarded_proposal.created_at) + " ago" %></div>
+								<div class="job-cont-award-desc">
+								<%= @awarded_proposal.description %>
+								</div><br />
+								
+							</div>
+							<div class="col-md-3">
+								<div class="job-cont-award-price">
+									<%= number_to_currency(@awarded_proposal.bid, precision: 0) %><br /> <small>per hour</small>
+								</div>
+							</div>
+						</div>
 					</div>
-					<%= f.submit "Submit Sales Pitch", class: "btn btn-primary" %>
-					<% end %>
+				<% end %>
+			</div>
+				<div class="row">
+					<div class="col-md-12">
+						<% if @job.user != current_user && @job.open == true %>
+							<h4>There are currently <%= @proposals.count %> proposals submitted for this job. These will remain hidden until a winner has been chosen.</h4>
+						<% elsif @job.user != current_user && @job.open == false %>
+							<div class="text-center">
+								<h4>This is what you were up against</h4>
+								<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
+							</div>
+							<%= render 'jobs/proposal_loop' %>
+						<% else %>
+							<%= render 'jobs/proposal_loop' %>
+						<% end %>
+					</div>
+				</div>
+
+			</div>
+			<% if user_signed_in? && @job.user != current_user && @job.open == true %>
+			<div class="col-md-3">
+			<strong>Proposal</strong>
+				<div class="row">
+					<div class="col-md-12">
+						<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
+							<%= f.hidden_field :user_id, value: current_user.id %>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">$</div>
+										<%= f.text_field :bid, class: "form-control", placeholder: "What is your bid?" %>
+									<div class="input-group-addon"> per hour</div>
+								</div>				
+							 </div>
+						<div class="form-group">
+						<%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What's your sales pitch?" %>
+						</div>
+						<%= f.submit "Submit Sales Pitch", class: "btn btn-primary" %>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-		<% elsif @job.user == current_user && @job.open == true  %>
-			<div><h3>Boost This Job</h3></div>
-		<% elsif @job.open == false  %>
-			<div><h3>This job is closed</h3></div>
-		<% else %>
-		<div><h3>Sign in to apply</h3>
-		<%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %><br />
-		Already a registered as a tradie? <%= link_to 'Login', new_user_session_path, class: "" %>
-		</div>
+			<% elsif @job.user == current_user && @job.open == true  %>
+				<div><h3>Boost This Job</h3></div>
+			<% elsif @job.open == false  %>
+				<div><h3>This job is closed</h3></div>
+			<% else %>
+			<div><h3>Sign in to apply</h3>
+			<%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %><br />
+			Already a registered as a tradie? <%= link_to 'Login', new_user_session_path, class: "" %>
+			</div>
 
-		<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>

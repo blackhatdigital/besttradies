@@ -2,22 +2,13 @@
 	background-color:rgba(0,0,0,0)!important;
 	border:none;
 	top:-100px;
-	height:103px;
+
 }
 
 .header-lrg{
 background-image:url('http://sharewoodworking.com/wp-content/uploads/2015/10/bigstock-Mature-Carpenter-In-The-Worksh-94935893.jpg');
 background-size: cover;
 height:700px;
-}
-
-.header-lrg-blur{
-	-webkit-filter: blur(10px);
-	-moz-filter: blur(10px);
-	-o-filter: blur(10px);
-	-ms-filter: blur(10px);
-	filter: blur(10px);
-
 }
 
 .closeblur{
@@ -76,6 +67,8 @@ form[role=login] > div {
 	margin-top:100px;
 }
 
+
+
 .navbar-default .navbar-nav > li > a{
 	color:#fff;
 	padding:5px 20px !important;
@@ -87,7 +80,38 @@ form[role=login] > div {
 }
 
 .btn-outline{
-	border:2px solid white;
+	border:2px solid #ccc;
+	border-radius:200px;
+	background-color:rgba(0,0,0,0);
+	padding:5px 20px !important;
+}
+
+
+/* Header Small */
+
+.header-sml{
+background-color:#fff;
+border-bottom:1px solid #f1f1f1;
+}
+
+.header-sml img{
+width:50%;
+padding-bottom:10px;
+}
+
+
+.header-sml .navbar-default .navbar-nav > li > a{
+	color:#ccc;
+	padding:5px 20px !important;
+}
+
+.header-sml .navbar-default .navbar-nav > li > a:hover{
+	color:#ccc;
+
+}
+
+.header-sml .btn-outline{
+	border:2px solid #ccc;
 	border-radius:200px;
 	background-color:rgba(0,0,0,0);
 	padding:5px 20px !important;
