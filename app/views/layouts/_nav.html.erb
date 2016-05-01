@@ -16,12 +16,24 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-2">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-        <li> 
-          <%= link_to('Edit registration', edit_user_registration_path) %>
+        <li>
+          <%= link_to('Add a New Job', new_job_path, :method => :get, class: "btn btn-default btn-outline btn-circle collapsed") %>        
         </li>
         <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :get, class: "btn btn-default btn-outline btn-circle collapsed") %>        
+          <%= link_to('My Dashboard', myjobs_path, :method => :get,) %>        
         </li>
+
+        <li role="presentation" class="dropdown">
+          <%= link_to('Settings', "#", :"data-toggle" => "dropdown", :role => "button", :"aria-haspopup" => "true", :"aria-expanded" => "false", class: "dropdown-toggle") %>
+          <ul class="dropdown-menu">
+            <li> 
+              <%= link_to('Edit registration', edit_user_registration_path) %>
+            </li>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :get) %>        
+            </li>
+          </ul>
+         </li>
         <% else %>
         <li>
           <%= link_to('Register', new_user_registration_path)  %>
