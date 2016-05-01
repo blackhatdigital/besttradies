@@ -17,9 +17,20 @@
 
  body{
  	overflow-x:hidden; 
+ 	font-family: 'Roboto', sans-serif;
  }
 
 .bg-grey{
 	min-height:100vh;
 	background-color: #f7f7f7;
+}
+
+a, a:link, a:visited, a:active{
+	font-family: 'Roboto', sans-serif;
+	color: #0088cf;
+	
+}
+
+a:hover{
+	color: #17A1E6;
 }

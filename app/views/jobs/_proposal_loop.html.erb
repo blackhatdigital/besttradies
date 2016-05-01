@@ -1,15 +1,16 @@
-
 <% @proposals.each do |proposal| %>
 	<div class="row job-joblisting">
 		<div class="col-md-1">
-			<%= image_tag proposal.user.avatar.url(:thumb), size: "40" %>
+			<%= image_tag proposal.user.avatar.url(:thumb), size: "50" %>
 		</div>
-		<div class="col-md-8 job-joblisting-desc">
-			<%= proposal.user.firstname%> <%= proposal.user.lastname%><br />
-			<% if @job.user == current_user %>
-			<%= proposal.description %><br />
-			<% end %>
-			<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
+		<div class="col-md-8">
+			<span class="job-joblisting-desc-name"><%= proposal.user.firstname%> <%= proposal.user.lastname%></span><br />
+			<div class="job-joblisting-desc">
+				<% if @job.user == current_user %>
+				<%= proposal.description %><br />
+				<% end %>
+				<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
+			</div>
 		</div>
 		<div class="col-md-3 text-right">
 			<div class="job-joblisting-price">

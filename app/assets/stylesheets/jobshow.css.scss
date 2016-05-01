@@ -1,5 +1,7 @@
 .job-top{
 
+padding:20px;
+
 }
 
 .job-top h1 {
@@ -31,10 +33,8 @@
 
 
 .job-cont-med{
-	background-color:#1f2836;
-	color:#fff;
+	background-color:#F7F7F7;
 	padding:20px;
-	border:1px solid #f1f1f1;
 }
 
 .job-cont-med h2{
@@ -105,7 +105,15 @@ color: #6a915b
 	background-color: #efefef;
 }
 
+.job-joblisting-desc-name{
+	font-size:1.4em;
+}
+
 .job-joblisting-desc{
+	font-size:1em;
+}
+
+.job-joblisting-desc small{
 	font-size:.8em;
 }
 
@@ -116,19 +124,24 @@ color: #6a915b
 
 .job-joblisting-price small{
 	font-size:.8em;
-	color:#ccc;
+	
+}
+
+.job-joblisting img{
+	border-radius:5px;
 }
 
 .job-ratings{
-background-color:#efefef;
+background-color:#222226;
 	border:1px solid #e5e5e5; 
 	font-size:.8em;
 	padding:10px;
 	margin-bottom:20px;
+	color:#fff;
 }
 
 .proposal-count{
-	background-color:#fff;
+	background-color:#dfdfdf;
 	padding:40px;
 	-webkit-border-bottom-right-radius: 10px;
 	-webkit-border-bottom-left-radius: 10px;
@@ -137,7 +150,14 @@ background-color:#efefef;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 	border:1px solid #e5e5e5;
+	margin-bottom:50px;
 }
+
+.proposal-count h3{
+	color:#fff;
+	text-align:center;
+}
+
 
 .proposal-next-time{
 	margin-bottom:50px;
@@ -156,7 +176,7 @@ background-color:#efefef;
 	transition: all .3s ease;
 	color:#96cce0;
 	display: table;
-	margin-bottom:40px;
+	margin-bottom:20px;
 }
 
 .job-add-prop:hover{
@@ -191,8 +211,24 @@ color:#0088cf;
 	margin-top:20px;
 }
 
+
+
 .job-cont-details{
-	font-size:1em;
+	padding:20px;
+	font-size:1.2em;
+	font-family: 'gothambold1';
+	text-align:center;
+}
+
+.job-cont-details-cont h3{
+	font-size:1.2em;
+	font-family: 'gothambold1';
+	letter-spacing:-1px;
+}
+
+
+.job-price{
+	color:#89B777;
 }
 
 .modal-header{
@@ -212,3 +248,17 @@ color:#0088cf;
 .sub-prop input[type="text"]{
 	height:40px !important;
 }
+
+.job-open{
+color:#89b777;
+font-size:1.5em;
+}
+.job-closed{
+color:#c00001;
+font-size:1.5em;
+}
+
+
+
+
+

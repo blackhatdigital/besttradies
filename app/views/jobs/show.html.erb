@@ -19,24 +19,48 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h2>Job Description</h2>
-						<div class="job-cont-sub"><%= time_ago_in_words(@job.created_at) + " ago" %></div>
+						<div class="job-cont-sub"><%= link_to @job.category.name, search_jobs_path(:utf8 => "true", :category => @job.category.id, :location => nil, :commit => "Search+Jobs") %> <%= time_ago_in_words(@job.created_at) + " ago" %></div>
 						<div class="job-cont-desc"><p><%= @job.description %></p></div>
+
 					</div>
-					<div class="col-md-3">
-							<div class="job-cont-details"><strong>Job Location:</strong> <%= @job.location %></div>
-							<div class="job-cont-details"><strong>Category:</strong> <%= @job.category.name %></div>
-							<div><span class="label label-success"><%= number_to_currency(@job.budget, precision: 0) %></span></div>
+					<div class="col-md-3 job-cont-details-cont">
+					<h3>Others Requirements</h3>
+					<p><%= link_to @job.user.firstname + " " + @job.user.lastname, trady_path(@job.user.id) %> requires that you meet the following requirements before you apply.</p>
+							<ul>
+								<% @job.skills.each do |skill| %>
+									<li><%= skill.name %></li>
+								<% end %>
+
+							</ul>
 					</div>
 				</div>
 				</div>
 				<div class="job-cont-med">
-					<h2>Others Requirements</h2>
-					<ul>
-						<% @job.skills.each do |skill| %>
-							<li><%= skill.name %></li>
-						<% end %>
+					<div class="row">
 
-					</ul>
+						<div class="col-md-2 text-center">
+							<div class="job-cont-details"><div>Location</div><%= link_to @job.location, search_jobs_path(:utf8 => "true", :location => @job.location, :category => nil, :commit => "Search+Jobs") %></div>
+						</div>
+						<div class="col-md-2 text-center">
+							<div class="job-cont-details"><div><%= @proposals.count %></div> <div>Proposals</div></div>
+						</div>
+						<div class="col-md-2 text-center">
+							<div class="job-cont-details"><div>Budget</div><span class="job-price"><%= number_to_currency(@job.budget, precision: 0) %></span></div>
+						</div>
+						<div class="col-md-4">
+						</div>
+
+
+						<div class="col-md-2">
+							<div class="job-cont-details text-center">
+							<% if @job.open == true %>
+								<div class="job-open">OPEN</div>
+							<% else %>
+								<div class="job-closed">CLOSED</div>
+							<% end %>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<% if @awarded_proposal.present? %>
@@ -64,7 +88,7 @@
 				<% end %>
 			</div>
 				<div class="row">
-					<div class="col-md-12 proposal-count">
+					<div class="col-md-12">
 						<% if @job.user != current_user && @job.open == true  %>
 						<a data-toggle="modal" data-target="#myModal">	
 							<div class="job-add-prop">
@@ -73,17 +97,26 @@
 								</div>			
 							</div>
 						</a>
+						<div class="col-md-12 proposal-count">
 						<%= render 'jobs/proposal_loop' %>
-
+						</div>
 						<% elsif @job.user != current_user && @job.open == false %>
+						<div class="col-md-12 proposal-count">
 							<div class="text-center proposal-next-time">
 								<h4>This is what you were up against</h4>
 								<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
 							</div>
 							<%= render 'jobs/proposal_loop' %>
+						</div>
 						<% else %>
+						<div class="col-md-12 proposal-count">
+							<% if @proposals.count == 0 %>
+							<h3>There are currently no proposals on this job</h3>
+							<% end %>
 							<%= render 'jobs/proposal_loop' %>
+						</div>
 						<% end %>
+
 					</div>
 				</div>
 			</div>
@@ -116,7 +149,7 @@
 		<div class="form-group">
 		<%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What's your sales pitch?" %>
 		</div>
-		<%= f.submit "Submit Sales Pitch", class: "btn btn-primary" %>
+		<%= f.submit "Submit Sales Pitch", class: "btn btn-success btn-lg btn-block" %>
 		<% end %>
 	</div>
 </div>
