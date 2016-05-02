@@ -1,0 +1,36 @@
+$(document).ready(function () {
+
+  $(".add-job").click(function() {  
+    $(".add-job-box").show();
+
+    setTimeout(function(){
+        $(".add-job-box").animate({top: '0'});
+    }, 500);  
+
+  });
+  
+  $(".closeblurjob").click(function() { 
+    $(".add-job-box").animate({top: '-1250px'}); 
+  });
+
+
+var $div1 = $('.new-job-p1'), 
+    $div2 = $('.new-job-p2'),
+    currentDiv = 'new-job-p1',
+    $button = $('.new-job-p1-next');
+
+$div2.hide();
+
+  $($button).click(function(e) {  
+
+	$div1.toggle('slide', {direction: 'left'}, 'slow', function () {
+     $div2.toggle('slide', {direction: 'right'}, 'slow');
+  });  
+		
+   	 
+
+    currentDiv = (currentDiv === 'div1') ? 'div2' : 'div1';
+});
+
+
+});

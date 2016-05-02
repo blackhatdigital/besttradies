@@ -11,7 +11,7 @@ background-size: cover;
 height:700px;
 }
 
-.closeblur{
+.closeblur, .closeblurjob{
 	cursor: pointer;
 	cursor: hand;
 	padding:10px;
@@ -19,7 +19,7 @@ height:700px;
 	text-align:right;
 }
 
-.closeblur:hover {
+.closeblur:hover, .closeblurjob:hover {
 	transition: 0.9s;
 	transform: rotateZ(180deg);
 }
@@ -38,6 +38,7 @@ form[role=login] {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+
 }
 
 form[role=login] input,
@@ -49,6 +50,27 @@ form[role=login] > div {
 	text-align: center;
 }
 
+form[role=newjob] {
+	color: #5d5d5d;
+	background: #fff;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	min-height:600px;
+
+}
+
+form[role=newjob] input,
+form[role=newjob] button {
+	font-size: 18px;
+	margin: 16px 0;
+}
+form[role=newjob] > div {
+	text-align: center;
+}
+
+
 .login-box{
 	position:absolute;
 	top:-1250px;
@@ -57,6 +79,25 @@ form[role=login] > div {
     margin-left: auto;
     margin-right: auto;
 }
+
+.add-job-box{
+	padding-top:100px;
+	position:absolute;
+	top:-1250px;
+  	left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+	z-index:11;
+	width:100%;
+	background-color:rgba(255,255,255,.5);
+	height:100vh
+}
+
+.fixed {
+	position:fixed
+}
+
 
 .header-home-text h1{
 	font-family: 'gothambold1';
