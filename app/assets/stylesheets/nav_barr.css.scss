@@ -57,14 +57,14 @@ form[role=newjob] {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	min-height:600px;
+	min-height:350px;
 
 }
 
 form[role=newjob] input,
-form[role=newjob] button {
+form[role=newjob] button,
+{
 	font-size: 18px;
-	margin: 16px 0;
 }
 form[role=newjob] > div {
 	text-align: center;

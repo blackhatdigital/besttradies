@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     setTimeout(function(){
         $(".add-job-box").animate({top: '0'});
-    }, 500);  
+    }, 1000);  
 
   });
   
@@ -18,19 +18,29 @@ var $div1 = $('.new-job-p1'),
     $div2 = $('.new-job-p2'),
     currentDiv = 'new-job-p1',
     $button = $('.new-job-p1-next');
+    $back = $('.new-job-p1-back ');
 
 $div2.hide();
 
   $($button).click(function(e) {  
 
 	$div1.toggle('slide', {direction: 'left'}, 'slow', function () {
-     $div2.toggle('slide', {direction: 'right'}, 'slow');
-  });  
-		
-   	 
+    $div2.toggle('slide', {direction: 'right'}, 'slow');
+  }); 
 
     currentDiv = (currentDiv === 'div1') ? 'div2' : 'div1';
 });
+
+
+  $($back).click(function(e) {  
+
+	$div2.toggle('slide', {direction: 'right'}, 'slow', function () {
+    $div1.toggle('slide', {direction: 'left'}, 'slow');
+  }); 
+
+    currentDiv = (currentDiv === 'div2') ? 'div1' : 'div2';
+});
+
 
 
 });
