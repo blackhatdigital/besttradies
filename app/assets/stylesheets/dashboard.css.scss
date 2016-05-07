@@ -1,0 +1,53 @@
+.myjobs h1{
+	font-size:2em;
+}
+
+.myjobs .job-open{
+color:#89b777;
+font-size:1em;
+padding-top:20px;
+}
+.myjobs .job-closed{
+color:#c00001;
+font-size:1em;
+padding-top:20px;
+}
+
+/* Side menu Start */
+
+.dash-side-menu {margin-top:25px;}
+
+.dash-side-menu .glyphicon { 
+	margin-right:10px; 
+}
+
+.dash-side-menu .panel-body { 
+	padding:0px; background-color:#4D525B; 
+}
+
+.dash-side-menu .panel-body table tr td {
+ 	padding-left: 15px
+}
+
+.dash-side-menu .panel-body .dash-side-table {
+	margin-bottom: 0px; background-color:#3f444c !important;
+	color:#8c9aa5;
+}
+
+.dash-side-table  glyphicon{
+	color:#8c9aa5;
+}
+
+.dash-side-table  a{
+	color:#dae2ed;
+}
+
+.dash-side-table  a:hover{
+	text-decoration:none;
+}
+
+.dash-side-table .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+	    border-top: 1px solid #4b515b !important;
+}
+
+

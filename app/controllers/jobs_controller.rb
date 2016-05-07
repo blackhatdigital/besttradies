@@ -57,9 +57,12 @@ class JobsController < ApplicationController
 	end
 
 	def myjobs
-		@jobs = Job.where(user_id: current_user).order("created_at DESC")
+		@jobs = Job.where(user_id: current_user, open: true).order("created_at DESC")
 	end
 
+	def myclosedjobs
+		@jobs = Job.where(user_id: current_user, open: false).order("created_at DESC")
+	end
 
 	def myawards
 		@jobs = Job.where(award_user: current_user.id).order("created_at DESC")

@@ -28,12 +28,12 @@
 
 a, a:link, a:visited, a:active{
 	font-family: 'Roboto', sans-serif;
-	color: #0088cf;
+
 	
 }
 
 a:hover{
-	color: #17A1E6;
+
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
@@ -44,4 +44,11 @@ a:hover{
 .navbar-nav > li > .dropdown-menu{
 	border-radius: 5px;
 	margin-top: 20px;
+}
+
+h1{
+	font-size: 3em;
+	color: #1e1e1e;
+	font-family: 'gothambold1';
+	letter-spacing:-1px;
 }

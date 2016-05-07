@@ -4,7 +4,7 @@
 			<div class="col-md-4"><%= render('dashmenu') %></div>
 			<div class="col-md-8">
 				<div class="myjobs-list">
-					<h1>My Jobs</h1>
+					<h1>My Closed Jobs</h1>
 					<div class="joblisting-header row">
 						<div class="col-md-1 text-center">Status</div>
 						<div class="col-md-3 text-center">Job Title</div>
@@ -40,7 +40,6 @@
 							<div class="joblisting-budget"><%= number_to_currency(job.budget, precision: 0)  %></div>
 						</div>
 						<div class="col-md-2 joblisting-budget ">
-						<%= link_to "Edit", edit_job_path(job), class: "btn btn-success btn-xs" %>
 						<%= link_to "Delete", job, method: :delete, data: {confirm: "Are you sure you want to delete this job?"}, class: "btn btn-danger btn-xs" %>
 			</div>
 					</div>
