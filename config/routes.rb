@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/myjobs' => 'jobs#myjobs'
   get '/myclosedjobs' => 'jobs#myclosedjobs'
   get '/myawards' => 'jobs#myawards'
+  get '/myproposals' => 'proposals#myproposals'
 
   root 'jobs#index'
 

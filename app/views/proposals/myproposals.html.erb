@@ -1,0 +1,53 @@
+<div class="row bg-grey myjobs">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"><%= render('jobs/dashmenu') %></div>
+			<div class="col-md-8">
+				<div class="myjobs-list">
+					<h1>Proposal History</h1>
+					<div class="joblisting-header row">
+						<div class="col-md-1 text-center">Status</div>
+						<div class="col-md-3 text-center">Job Title</div>
+						<div class="col-md-2 text-center">Proposals</div>
+						<div class="col-md-2 text-center">Started</div>
+						<div class="col-md-4 text-center">Your bid vs budget</div>
+						
+					</div>
+					<% @proposals.each do |proposal| %>
+					
+					<div class="row joblisting">
+						<div class="col-md-1">
+							<div class="job-cont-details text-center">	
+
+							<% if proposal.job.award_user == current_user.id && proposal.job.open == false %>
+									<div class="job-open">WON</div>
+								<% elsif proposal.job.open == true %>
+									<div class="job-closed ">STILL PENDING</div>
+								<% else %>
+									<div class="job-closed ">LOST</div>
+								<% end %>
+
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="joblisting-budget text-center"><%= proposal.description %> <%= link_to proposal.job.name, proposal.job %> </div>
+
+						</div>
+						<div class="col-md-2 text-center">
+							<div class="joblisting-proposals"></div>
+						</div>
+						<div class="col-md-2 text-center">
+						<div class="joblisting-time"><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(proposal.created_at) + " ago" %> </div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="joblisting-budget"><%= proposal.bid %> vs <%= proposal.job.budget %></div>
+						</div>
+
+					</div>
+					<% end %>	
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
