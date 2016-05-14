@@ -139,6 +139,7 @@
 	<div class="col-md-12 sub-prop">
 		<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
 			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :owner_id, value: @job.user.id %>
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon">$</div>

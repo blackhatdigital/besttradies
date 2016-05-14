@@ -21,6 +21,7 @@ gem 'geocoder'
 gem 'ratyrate'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
+gem 'public_activity'
 
 group :development, :test do
   gem 'byebug'

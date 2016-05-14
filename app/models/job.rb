@@ -1,4 +1,8 @@
 class Job < ActiveRecord::Base
+	include PublicActivity::Model
+ 	tracked owner: ->(controller, model){ controller && controller.current_user }
+
+
 	has_many :proposals
 	belongs_to :category
 	belongs_to :user

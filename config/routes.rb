@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'pages/terms'
   get 'pages/privacy'
 
+  resources :activities
+
   resources :jobs do
     resource :proposals, except: :index
     collection do
