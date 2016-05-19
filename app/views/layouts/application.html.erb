@@ -19,7 +19,6 @@
 
 	<% if activity.trackable %>
 		<%= link_to activity.owner_id, activity.trackable.job %> submitted a proposal for <%= link_to activity.trackable.job.name, activity.trackable.job %>
-		<%= link_to activity.owner_id, activity.trackable.job %> submitted a proposal for <%= link_to activity.trackable.job.name, activity.trackable.job %>
 
 		<hr />
 	<% else %>

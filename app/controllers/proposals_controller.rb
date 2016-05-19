@@ -6,7 +6,6 @@ class ProposalsController < ApplicationController
 		@proposal = @job.proposals.build(proposal_params)
 
 		if @proposal.save
-			@proposal.create_activity :create, owner: current_user, recipient: @job.user
 			redirect_to @proposal.job
 		else
 			render :new
