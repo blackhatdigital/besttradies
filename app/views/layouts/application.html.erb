@@ -13,28 +13,48 @@
 	<div class="container">
 		<div class="status_bg_inner">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="text-center status_cell">
-					<div class="status_number">100</div>
-					<h2>Jobs Open</h2>
+					<div class="status_number"><%= @jobcount %></div>
+					<h2>Jobs You Have Open</h2>
 					</div>
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="text-center status_cell">
-					<div class="status_number">100</div>
-					<h2>Jobs Open</h2>
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="text-center status_cell">
-					<div class="status_number">100</div>
-					<h2>Jobs Open</h2>
+					<div class="status_number"><%= @proposalcount %></div>
+					<h2>Proposals Received</h2>
 					</div>
 				</div>
 
 			</div>
+
+			<div class="row">
+				
+				<div class="col-md-4">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= @proposalcount %></div>
+					<h2>Proposals You Submitted</h2>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= @jobawards %></div>
+					<h2>Jobs You Have Won</h2>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= number_to_percentage(@winrate, precision: 1) %></div>
+					<h2>Win Rate</h2>
+					</div>
+				</div>
+
+			</div>
+
+
 		</div>
 		<div class="status_bg_close text-center">
 			<span class="glyphicon glyphicon-circle-arrow-up"></span>

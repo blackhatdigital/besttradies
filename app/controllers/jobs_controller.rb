@@ -1,5 +1,7 @@
 class JobsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :search]
+	before_action :myjobs, only: [:index, :show, :new, :edit]
+
 
 	def index
 		@jobs = Job.where(open: true).order_list(params[:sort_by]).page(params[:page]).per(25)
@@ -58,6 +60,10 @@ class JobsController < ApplicationController
 
 	def myjobs
 		@jobs = Job.where(user_id: current_user, open: true).order("created_at DESC")
+		@jobcount = Job.where(user_id: current_user, open: true).count
+		@proposalcount = Proposal.where(user_id: current_user.id).count
+		@jobawards = Job.where(award_user: current_user.id).count
+		@winrate = @jobawards.to_f / @proposalcount * 100
 	end
 
 	def myclosedjobs
