@@ -60,7 +60,17 @@ class JobsController < ApplicationController
 
 	def myjobs
 		@jobs = Job.where(user_id: current_user, open: true).order("created_at DESC")
+		@totaljobs = Job.where(user_id: current_user.id ).count
+
 		@jobcount = Job.where(user_id: current_user, open: true).count
+		@proposalreceived = Proposal.where(owner_id: current_user.id ).count
+
+		
+		@proposalopentotal = Job.joins(:proposals).where("jobs.open = ?", true).count 
+		@proposalopen = Job.joins(:proposals).where("jobs.open = ?", true).where("jobs.user_id = ?", current_user.id).count 
+
+		
+
 		@proposalcount = Proposal.where(user_id: current_user.id).count
 		@jobawards = Job.where(award_user: current_user.id).count
 		@winrate = @jobawards.to_f / @proposalcount * 100

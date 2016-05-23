@@ -13,19 +13,45 @@
 	<div class="container">
 		<div class="status_bg_inner">
 			<div class="row">
-				<div class="col-md-6">
+
+				<div class="col-md-2">
 					<div class="text-center status_cell">
 					<div class="status_number"><%= @jobcount %></div>
 					<h2>Jobs You Have Open</h2>
 					</div>
 				</div>
-				
-				<div class="col-md-6">
+
+					<div class="col-md-2">
 					<div class="text-center status_cell">
-					<div class="status_number"><%= @proposalcount %></div>
-					<h2>Proposals Received</h2>
+					<div class="status_number"><%= @proposalopen %></div>
+					<h2>Your Open Proposals</h2>
 					</div>
 				</div>
+				
+
+				<div class="col-md-2">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= @proposalopentotal %></div>
+					<h2>Total Open Proposals</h2>
+					</div>
+				</div>
+				
+			
+
+				<div class="col-md-2">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= @totaljobs %></div>
+					<h2>Total Jobs Posted</h2>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="text-center status_cell">
+					<div class="status_number"><%= @proposalreceived %></div>
+					<h2>Total Proposals Received</h2>
+					</div>
+				</div>
+
 
 			</div>
 
