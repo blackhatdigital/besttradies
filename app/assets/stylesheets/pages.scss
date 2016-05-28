@@ -1,3 +1,171 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.header-home-text h2{
+
+	font-size:2.5em;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+
+	}
+
+
+
+.header-home-text h3{
+
+	font-size:1.5em;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+	}
+
+.banner-btn-red{
+	background-color:#c7000d;
+	border-radius:100px;
+	padding:15px 50px;
+	font-size:1.5em;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+	
+	transition:all .5s ease;
+	font-weight:600;
+	max-width:320px;
+	margin:30px auto;
+
+}
+
+.banner-btn-red-sml{
+	background-color:#c7000d;
+	border-radius:100px;
+	padding:15px 20px;
+	font-size:1.2em;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+	
+	transition:all .5s ease;
+	font-weight:600;
+	max-width:210px;
+	margin: auto;
+
+}
+
+.banner-btn-red:hover, .banner-btn-red-sml:hover{
+	background-color:#6d0003;
+	cursor: pointer;
+   cursor: hand;
+
+}
+
+.home-intro-panel{
+	border-bottom:1px solid #e5e5e5;
+	padding:20px;
+	background-color:#fff;
+	width:100%;
+
+}
+
+
+.home-intro-panel h2{
+	font-size:2.5em;
+	font-family: 'Open Sans', sans-serif;
+	text-align:center;
+	color:#31383D;
+	font-weight:100;
+}
+
+.home-intro-panel p{
+	font-size:1.5em;
+	font-family: 'Open Sans', sans-serif;
+	text-align:center;
+	color:#31383D;
+}
+
+.home-intro-demo{
+	margin:60px 0;
+}
+
+.home-intro-demo h2{
+	font-size:2em;
+	font-family: 'Open Sans', sans-serif;
+	color:#31383D;
+	font-weight:100;
+}
+
+.home-intro-demo{
+	font-size:1.3em;
+	font-family: 'Open Sans', sans-serif;
+	color:#31383D;
+	font-weight:100;
+	line-height:40px;
+}
+
+#stickyheader{
+height:350px;
+
+
+}
+
+#stickyalias {
+  display: none;
+
+}
+.fixedheader{
+
+	border-bottom:1px solid #e5e5e5;
+	padding:10px;
+	background-color:#fff;
+	width:100%;
+	position: fixed;
+	top: 0px;
+
+}
+
+
+
+.fixedheader img{
+	width:100%;
+}
+
+
+.fixedheader h2{
+	font-size:2em;
+	font-family: 'Open Sans', sans-serif;
+	text-align:center;
+	color:#31383D;
+	font-weight:100;
+	line-height:0;
+}
+
+.fixedheader .sml-text{
+	font-size:1.2em;
+	font-family: 'Open Sans', sans-serif;
+	text-align:center;
+	color:#31383D;
+	padding-top:10px;
+}
+
+.home-list-trades{
+	background-color:#4D525B;
+	margin-top:60px;
+	padding:40px;
+	margin-bottom:100px;
+}
+
+.home-list-trades-title h2{
+	font-size:2.5em;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:100;
+	text-align:center;
+	color: #fff;
+	padding-bottom: 20px;
+}
+
+.home-list-trades-list{
+	list-style:none;
+	color:#fff;
+	font-size:1.2em;
+	text-align:center;
+}
+
+

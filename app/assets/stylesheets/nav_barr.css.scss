@@ -6,9 +6,21 @@
 }
 
 .header-lrg{
-background-image:url('http://sharewoodworking.com/wp-content/uploads/2015/10/bigstock-Mature-Carpenter-In-The-Worksh-94935893.jpg');
+background-image:url('http://amcmining.com/wp-content/uploads/2015/11/miner-determined-bigger.jpg');
 background-size: cover;
-height:700px;
+height:600px;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: right; 
+}
+
+.header-lrg-overlay {
+    background: url(https://s3.amazonaws.com/besttradies/dotsml.png) repeat;
+    height:100%;
+    width:100%;
+    background-attachment: fixed;
+    background-position: right;
+    background-color:rgba(0,0,0,.5);
 }
 
 .closeblur, .closeblurjob{
@@ -103,7 +115,6 @@ form[role=newjob] > div {
 	font-family: 'gothambold1';
 	font-size:6em;
 	color:#fff;
-	text-align:right;
 	letter-spacing:-5px;
 	margin-top:100px;
 }

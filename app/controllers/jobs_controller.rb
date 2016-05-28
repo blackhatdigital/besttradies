@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
-	before_action :authenticate_user!, except: [:index, :search]
-	before_action :myjobs, only: [:index, :show, :new, :edit]
+
 
 
 	def index
