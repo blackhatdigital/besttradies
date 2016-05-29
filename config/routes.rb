@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'pages/terms'
   get 'pages/privacy'
+  get 'jobs/new'
 
   resources :jobs do
     resource :proposals, except: :index

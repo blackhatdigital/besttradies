@@ -1,46 +1,66 @@
-<div class="row add-job-box fixed">
   <div class="container">
-    <div class="row" id="pwd-container">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <section class="login-form">
+    <div class="row addjob_container">
+      <div class="col-md-7">
         
-        <%= form_for :job, html: {role: "newjob"} do |f| %>
-           <div class="row">
-            <div class="col-md-8 text-left">
-               <%= link_to "#{image_tag("https://s3.amazonaws.com/besttradies/besttradies.png", :size => "150x52")}".html_safe %>
-            </div>
-            <div class="col-md-4">
-              <span class="pull-right closeblurjob glyphicon glyphicon-remove-sign"></span>
-            </div>
-          </div>
+        <%= form_for @job do |f| %>
 
                   <div class="new-job-p1">
                     <div class="row">
+
+                    <div class="col-md-12 form-group form-group-lg ">
+                        <div class="addjob-step">1</div><%= f.label "What type of work do you require?" %>
+
+                        <div class="input-group">
+                        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: "form-control addjob-mtop", placeholder: "Select a trade",name: "validate-text", id: "validate-text", required: true  %>
+                         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                      </div>
+                    </div>
+
                       <div class="col-md-12  form-group form-group-lg">
-                        <%= f.text_field :name, class: "form-control", placeholder: "Job Title" %>
+                     <div class="addjob-step">2</div> <%= f.label "Give your job a title" %>
+                        <div class="input-group">
+                         <%= f.text_field :name, class: "form-control addjob-mtop", placeholder: "e.g. Electrician Contractor", name: "validate-text", id: "validate-text", required: true %>
+                         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
                       </div>
                       <div class="col-md-12 form-group form-group-lg">
-                        <%= f.text_area :description, class: "form-control", placeholder: "Describe your job" %>
+
+                      <div class="addjob-step">3</div><%= f.label "Tell us about your job" %>
+                        <div class="input-group" data-validate="length" data-length="50">
+                        <%= f.text_area :description, class: "form-control addjob addjob-stop", placeholder: "Describe your job here...", name: "validate-text", id: "validate-text", required: true %>
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
                       </div>
                       <div class="col-md-12 form-group form-group-lg">
-                        <%= f.text_area :skill_list, rows:3, class: "form-control", placeholder: "Enter any requirements seperated by a comma. Eg: white card, abn, own tools" %>
+                        <div class="input-group" data-validate="length" data-length="50">
+                          <%= f.text_area :requirements, class: "form-control addjob addjob-mtop", placeholder: "Do you have any requirements? eg: All applicants must have their own tools and equipment.", name: "validate-text", id: "validate-text", required: true %>
+                          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
                       </div>
+                      <div class="addjob-step">4</div><%= f.label "Would any other skills sets help with this job?" %>
+                      <div class="col-md-12 form-group form-group-lg">
+                        <div class="input-group" data-validate="length" data-length="50">
+                          <%= f.text_area :skill_list, rows:3, class: "form-control addjob addjob-mtop", placeholder: "What is expected from your applicants? e.g. All applicants must have their own tools, transport and insurances.", name: "validate-text", id: "validate-text", required: true %>
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
+                      </div>
+                      <div class="clear"></div>
                       <div class= "btn btn-primary new-job-p1-next">NEXT</div>
                     </div>
                   </div>
 
                   <div class="new-job-p2">
                     <div class="row">
-                      <div class="col-md-12 form-group form-group-lg ">
-                        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: "form-control", placeholder: "Where is the job?" %>
-                      </div>
+
                       <div class="col-md-12 form-group form-group-lg">
-                        <%= f.text_field :location, class: "form-control", placeholder: "Location eg: Brisbane" %>
+                        <%= f.text_field :location, class: "form-control addjob-mtop", placeholder: "Location eg: Brisbane" %>
                       </div>
 
                       <div class="col-md-12 form-group form-group-lg">
-                              <%= f.text_field :budget, class: "form-control", placeholder: "What is your budget?" %>
+                              <%= f.text_field :budget, class: "form-control addjob-mtop", placeholder: "What is your budget?" %>
+                      </div>
+                      <div class="col-md-12 form-group form-group-lg">
+                              <%= f.text_field :timeframe, class: "form-control addjob-mtop", placeholder: "How many days would you like to see this job completed in?" %>
                       </div>
 
                       <div class="col-md-6 form-group">
@@ -54,9 +74,7 @@
                   </div>
         <% end %>
 
-        </section>  
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-5">asdasdas</div>
     </div>
   </div>
-</div>

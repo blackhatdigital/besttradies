@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
 
 
-
 	def index
+
 		@jobs = Job.where(open: true).order_list(params[:sort_by]).page(params[:page]).per(25)
 	end
 
 	def new
 		@job = Job.new
+
 	end
 
 	def create
@@ -66,9 +67,7 @@ class JobsController < ApplicationController
 
 		
 		@proposalopentotal = Job.joins(:proposals).where("jobs.open = ?", true).count 
-		@proposalopen = Job.joins(:proposals).where("jobs.open = ?", true).where("jobs.user_id = ?", current_user.id).count 
-
-		
+		@proposalopen = Job.joins(:proposals).where("jobs.open = ?", true).where("jobs.user_id = ?", current_user.id).count
 
 		@proposalcount = Proposal.where(user_id: current_user.id).count
 		@jobawards = Job.where(award_user: current_user.id).count
@@ -94,6 +93,6 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal, :award_user)
+		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal, :award_user, :requirements, :timeframe)
 	end	
 end
