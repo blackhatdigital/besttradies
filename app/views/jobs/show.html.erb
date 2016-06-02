@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				 <div class="job-profile-image"><%= image_tag @job.user.avatar.url(:medium) %></div>
-				 <div class="job-profile-details"><%= link_to @job.user.firstname + " " + @job.user.lastname, trady_path(@job.user.id) %></div>
+				 <div class="job-profile-details"><%= link_to @job.user.firstname, trady_path(@job.user.id) %> <%= link_to @job.user.lastname, trady_path(@job.user.id) %></div>
 				 <div class="job-profile-details"><p><i>"<%= @job.user.bio %>"</p></i> </div>
 			</div>
 			<div class="col-md-9">
@@ -26,7 +26,6 @@
 					<div class="col-md-3 job-cont-details-cont">
 					<h3>Others Requirements</h3>
 				
-						<p><strong>Days Required:</strong> <%= (@job.end_date - @job.start_date).to_i %></p>
 						<p><strong>Start Date:</strong> <%= @job.start_date %></p>
 						<p><strong>Finish Date:</strong> <%= @job.end_date %></p>
 				</div>
