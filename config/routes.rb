@@ -1,27 +1,30 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
-  resources :tradies
-
+ 
+  root 'pages#home'
+  
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
   get 'pages/terms'
   get 'pages/privacy'
-  get 'jobs/new'
 
-  resources :jobs do
-    resource :proposals, except: :index
-    collection do
-      get :search
-    end
-  end
+  get '/jobs' => 'jobs#index'
+  
+  get 'jobs/new'
 
   get '/myjobs' => 'jobs#myjobs'
   get '/myclosedjobs' => 'jobs#myclosedjobs'
   get '/myawards' => 'jobs#myawards'
   get '/myproposals' => 'proposals#myproposals'
 
-  root 'jobs#index'
+  resources :tradies
+  resources :jobs do
+    resource :proposals, except: :index
+    collection do
+      get :search
+    end
+  end
 
   devise_for :users
   get 'myjobs' => 'jobs#myjobs', :as => 'user_root'

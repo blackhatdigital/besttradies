@@ -18,21 +18,21 @@
 
 
   <div class="row" id="stickyheader">
-    <div class="home-intro-panel col-md-12">
+    <div class="home-intro-panel col-md-12 salesheader">
       <h2>Straight Up, No Sales Crap</h2>
       <p>Just a place where you can hire REAL tradies who work hard.<br /></p>
-      <div class="banner-btn-red">Get Started For Free</div>
+      <a href="<%= jobs_new_path %>"><div class="banner-btn-red">Get Started For Free</div></a>
     </div>
   </div>
 
-  <div class="row fixedheader">
+  <div class="row fixedheader salesheader">
     <div class="home-intro-panel-sml">
       <div class="container">
         <div class="row">
           <div class="col-md-2"><%= link_to "#{image_tag("https://s3.amazonaws.com/besttradies/besttradies.png")}".html_safe, root_path %></div>
           <div class="col-md-4"><h2>Straight Up, No Sales Crap</h2></div>
           <div class="col-md-3 sml-text">Hire REAL tradies who work hard.</div>
-          <div class="col-md-3"><div class="banner-btn-red-sml">Get Started For Free</div></div>
+          <div class="col-md-3"><a href="<%= jobs_new_path %>"><div class="banner-btn-red-sml">Get Started For Free</div></a></div>
         </div>
       </div>
     </div>

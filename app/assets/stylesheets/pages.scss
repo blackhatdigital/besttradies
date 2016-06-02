@@ -35,6 +35,16 @@
 
 }
 
+.salesheader a:hover{
+	text-decoration:none;
+	color:#fff;
+}
+
+.salesheader a:link, .salesheader a:active, .salesheader a:visited {
+	text-decoration:none;
+	color:#fff;
+}
+
 .banner-btn-red-sml{
 	background-color:#c7000d;
 	border-radius:100px;
@@ -111,7 +121,7 @@ height:350px;
 
 }
 .fixedheader{
-
+	display:none;
 	border-bottom:1px solid #e5e5e5;
 	padding:10px;
 	background-color:#fff;
