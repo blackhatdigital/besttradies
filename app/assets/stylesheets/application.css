@@ -53,3 +53,11 @@ h1{
 	letter-spacing:-1px;
 }
 
+
+.btn-success {
+    color: #fff !important;
+    background-color: #28c072 !important;
+    border-color: #22ad65 !important;
+}
+
+

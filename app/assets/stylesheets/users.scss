@@ -1,3 +1,89 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.grey_bg{
+	background-color:#f0f0f0;
+}
+
+.btn-signup:active, .btn-signup.active, .open > .btn-signup.dropdown-toggle{
+	background-color:#28c072 !important;
+	border-color: #22ad65 !important;
+}
+
+.btn-signup {
+    color: #fff !important;
+    background-color: #4D525B !important;
+    border-color: #595e66 !important;
+    
+}
+
+.marg-auto{
+	margin: 0 auto;
+	float:none;
+	text-align: center;
+	width: 100%;
+	padding:0 0 20px 0;
+}
+
+.marg-auto h3{
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	color:#1F2836;
+	font-size:1.3em;
+
+}
+
+.signup-submit{
+	margin-top:40px;
+}
+
+#error_explanation h2{
+	color:#c7000d !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	font-size:1.3em;
+	display:none;
+}
+
+#error_explanation ul li{
+	list-image:none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	color:#c7000d !important;
+	font-size:1em;
+
+}
+#error_explanation ul {
+background-color:#ead3d4;
+border:1px solid #c7000d;
+border-radius:5px;
+text-align:center;
+padding:10px 5px; 
+list-style-type: none;
+margin:20px 0;
+    }
+
+.signupform h1{
+	color:#1F2836 !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	font-size:2.2em;
+
+}
+
+.signupform{
+	padding:50px 0;
+}
+
+.signup-terms{
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	font-size:1em;
+	padding-top:20px;
+}
+
+.signupform-h1{
+	padding-bottom:40px;
+}
