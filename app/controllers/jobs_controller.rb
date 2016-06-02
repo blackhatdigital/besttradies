@@ -8,18 +8,14 @@ class JobsController < ApplicationController
 
 	def new
 		@job = Job.new
-
 	end
 
 	def create
 		@job = Job.new(job_params)
 		@job.user = current_user
-		if @job.save
+		@job.save
 		redirect_to @job
-		else
-			flash[:error] = @job.errors.full_messages.to_sentence
-			render :new
-		end
+
 	end
 
 	def edit
@@ -93,6 +89,6 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :skill_list, :awarded_proposal, :award_user, :requirements, :timeframe)
+		params.require(:job).permit(:name, :description, :budget, :location, :open, :category_id, :awarded_proposal, :award_user, :requirements, :end_date, :start_date, :price_per_hour)
 	end	
 end

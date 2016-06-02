@@ -18,3 +18,4 @@
 //= require turbolinks
 //= require jquery-ui
 
+

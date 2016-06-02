@@ -1,0 +1,54 @@
+.lbl {
+  position: relative;
+  display: block;
+  height: 20px;
+  width: 44px;
+  background: #e5e5e5;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lbl:after {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 100px;
+  background: #1F2836;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+  content: '';
+  transition: all 0.3s ease;
+}
+
+.lbl:active:after { transform: scale(1.15, 0.85); }
+
+.cbx:checked ~ label { background: #90e5b9; }
+
+.cbx:checked ~ label:after {
+  left: 20px;
+  background: #28c072;
+}
+
+.cbx:disabled ~ label {
+  background: #d5d5d5;
+  pointer-events: none;
+}
+
+.cbx:disabled ~ label:after { background: #bcbdbc; }
+
+.hidden { display: none; }
+
+.add-checkbox label{
+  margin-top: 0;
+  padding-top: 0
+}
+
+.add-checkbox{
+  margin: 20px 0; 
+  font-size: 1.3em;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+}

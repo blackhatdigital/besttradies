@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529094215) do
+ActiveRecord::Schema.define(version: 20160601044609) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20160529094215) do
     t.datetime "images_updated_at"
     t.text     "requirements"
     t.integer  "timeframe"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "price_per_hour"
   end
 
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"

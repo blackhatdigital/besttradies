@@ -1,6 +1,59 @@
 $(document).ready(function () {
 
 
+$(function() {
+
+      $('[data-toggle="popover"]').popover({
+      });
+
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+
+
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        $( "#from" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+        $( "#to" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+      }
+    });
+  });
+
+
+$(function(){
+$('input[type="checkbox"]').change(function(){
+if($('input[type="checkbox"]').prop("checked") == true){
+  $(".hourlyfee").prop("disabled", false);
+  $(".flatfee").prop("disabled", true);
+  $(".flatfee").removeClass( ".input-group-addon.danger" )
+}else{
+  $(".hourlyfee").prop("disabled", true);
+  $(".flatfee").prop("disabled", false);
+}
+});
+});
+
+
+
+
+$(function() {
+
+        $('input[type="checkbox"]').on('change', function() {
+            $(this).closest('fieldset').find('.myClass').toggle(this.checked);
+            $('.flatfee').toggle();
+        });
+    });
+
+/* SLIDING DIV
 
 var $div1 = $('.new-job-p1'), 
     $div2 = $('.new-job-p2'),
@@ -27,7 +80,10 @@ $div2.hide();
   }); 
 
     currentDiv = (currentDiv === 'div2') ? 'div1' : 'div2';
+
 });
+
+*/
 
 
 //Add validation for forms
@@ -58,7 +114,7 @@ $div2.hide();
     }else{
         $addon.removeClass('success');
         $addon.addClass('danger');
-        $icon.attr('class', 'glyphicon glyphicon-remove');
+        $icon.attr('class', 'glyphicon glyphicon-pencil');
     }
         
         if ($form.find('.input-group-addon.danger').length == 0) {
@@ -69,6 +125,7 @@ $div2.hide();
   });
     
     $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
-    
+
     
 });
+

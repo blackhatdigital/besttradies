@@ -25,21 +25,19 @@
 					</div>
 					<div class="col-md-3 job-cont-details-cont">
 					<h3>Others Requirements</h3>
-					<p><%= link_to @job.user.firstname + " " + @job.user.lastname, trady_path(@job.user.id) %> requires that you meet the following requirements before you apply.</p>
-							<ul>
-								<% @job.skills.each do |skill| %>
-									<li><%= skill.name %></li>
-								<% end %>
-
-							</ul>
-					</div>
+				
+						<p><strong>Days Required:</strong> <%= (@job.end_date - @job.start_date).to_i %></p>
+						<p><strong>Start Date:</strong> <%= @job.start_date %></p>
+						<p><strong>Finish Date:</strong> <%= @job.end_date %></p>
 				</div>
 				</div>
 				<div class="job-cont-med">
 					<div class="row">
 
-						<div class="col-md-2 text-center">
-							<div class="job-cont-details"><div>Location</div><%= link_to @job.location, search_jobs_path(:utf8 => "true", :location => @job.location, :category => nil, :commit => "Search+Jobs") %></div>
+						<div class="col-md-3 text-center">
+							<div class="job-cont-details"><div>Location</div><%= link_to @job.location, search_jobs_path(:utf8 => "true", :location => @job.location, :category => nil, :commit => "Search+Jobs") %>
+
+							</div>
 						</div>
 						<div class="col-md-2 text-center">
 							<div class="job-cont-details"><div><%= @proposals.count %></div> <div>Proposals</div></div>
@@ -47,7 +45,7 @@
 						<div class="col-md-2 text-center">
 							<div class="job-cont-details"><div>Budget</div><span class="job-price"><%= number_to_currency(@job.budget, precision: 0) %></span></div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 						</div>
 
 

@@ -22,6 +22,8 @@ gem 'ratyrate'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 
+
+
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'

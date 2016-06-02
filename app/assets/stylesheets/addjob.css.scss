@@ -1,5 +1,5 @@
 .addjob_container{
-	margin-top:100px;
+	margin-top:50px;
 }
 
 .addjob_container label{
@@ -8,6 +8,7 @@
 	font-family: 'Open Sans', sans-serif;
 	padding-bottom:15px;
 	letter-spacing:-1px;
+	margin-top:40px;
 }
 
 .addjob_container .sublabel{
@@ -24,7 +25,7 @@ textarea.addjob{
 }
 
 .addjob-step{
-	background-color:#34B5E8;
+	background-color:#28C072;
 	width:30px;
 	height:30px;
 	border-radius:100px;
@@ -36,6 +37,7 @@ textarea.addjob{
 	display:block;
 	float:left;
 	margin-right:10px;
+	margin-top:40px;
 
 }
 .addjob-step:after{
@@ -59,7 +61,7 @@ textarea.addjob{
 }
 .input-group-addon.success {
     color: rgb(255, 255, 255);
-    background-color: rgb(92, 184, 92);
+    background-color: #28C072;
     border-color: rgb(76, 174, 76);
 }
 .input-group-addon.info {
@@ -73,7 +75,72 @@ textarea.addjob{
     border-color: rgb(238, 162, 54);
 }
 .input-group-addon.danger {
-    color: rgb(255, 255, 255);
-    background-color: rgb(217, 83, 79);
-    border-color: rgb(212, 63, 58);
+    color: #fff;
+    background-color: #4D525B;
+    border-color: #595f68;
 }
+
+.popover{
+	width:400px !important;
+}
+
+.popover-title{
+	background-color:#28C072 !important;
+	color:#fff !important;
+	font-size:1.4em !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:100;
+
+}
+
+.popover-content{
+	background-color:#f5f5f5 !important;
+	color:#4D525B !important;
+	font-size:1em !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+}
+
+.add-new-job-header{
+	background-color:#4D525B;
+	border-bottom:1px solid #595f68;
+	color:#fff;
+	padding:40px 0;
+}
+
+.add-new-job-header h1{
+	color:#fff !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	line-height:50px;
+	font-size:4em;
+}
+
+
+.add-new-job-header-h1{
+	
+}
+.add-new-job-header-h2{
+	margin-top:-10px;
+}
+
+.add-new-job-header-h2 h2{
+	font-size:2em;
+	color:#fff !important;
+	font-weight:100;
+	font-family: 'Open Sans', sans-serif;
+	
+
+}
+
+.green-text{
+	color:#28C072;
+}
+
+.input-group-addon.dollar{
+	background-color:#28C072;
+	color:#fff;
+}
+
+
+
