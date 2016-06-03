@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602053247) do
+ActiveRecord::Schema.define(version: 20160603225149) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 20160602053247) do
     t.integer  "job_id"
     t.integer  "user_id"
     t.integer  "owner_id"
+    t.string   "one_liner"
+    t.integer  "hour_bid"
   end
 
   add_index "proposals", ["job_id"], name: "index_proposals_on_job_id"

@@ -169,27 +169,52 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <span class="modal-title">Add your proposal</span>
       </div>
+      		<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
+
       <div class="modal-body">
        <div class="row">
 	<div class="col-md-12 sub-prop">
-		<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.hidden_field :owner_id, value: @job.user.id %>
-			<div class="form-group">
-				<div class="input-group">
-					<div class="input-group-addon">$</div>
-						<%= f.text_field :bid, class: "form-control", placeholder: "What is your bid?" %>
-					<div class="input-group-addon"> per hour</div>
-				</div>				
-			 </div>
-		<div class="form-group">
-		<%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What's your sales pitch?" %>
-		</div>
-		<%= f.submit "Submit Sales Pitch", class: "btn btn-success btn-lg btn-block" %>
-		<% end %>
-	</div>
-</div>
 
+
+			<div class="form-group form-group-lg">
+		        <div class="input-group" data-toggle="popover" title="One Liner" data-content="Most employers will look at this line first. If it's not appealing you'll get overlooked. This is perhaps the most important part of your proposal. Make it count!" data-trigger="focus" >
+		         <%= f.text_field :one_liner, class: "form-control addjob-mtop", placeholder: "What's your one liner?", id: "validate-text", required: true %>
+		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+		        </div>
+	   		</div>
+
+
+			<div class="form-group form-group-lg">
+		        <div class="input-group" data-toggle="popover" title="Flat Fee" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
+		        <div class="input-group-addon success">$</div>
+		         <%= f.text_field :bid, class: "form-control addjob-mtop", placeholder: "What is your flat fee bid?", id: "validate-text", required: true %>
+		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+		        </div>
+	   		</div>
+
+			<div class="form-group form-group-lg">
+		        <div class="input-group" data-toggle="popover" title="Hourly Rate" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
+		        <div class="input-group-addon success">$</div>
+		         <%= f.text_field :hour_bid, class: "form-control addjob-mtop", placeholder: "What is your hourly rate bid?", id: "validate-text", required: true %>
+		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+		        </div>
+	   		</div>
+
+			<div class="input-group" data-validate="length" data-length="50" data-toggle="popover" title="It's all in the detail" data-content="This is it, it's no or never. Let your future employer know why they should choose you. Outline your experiences, work ethic, attitude etc."  data-trigger="focus">
+			<%= f.text_area :description, rows: 5, class: "form-control addjob addjob-stop", placeholder: "What's your sales pitch?",  id: "validate-text", required: true %>
+			<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+			</div>
+			
+
+		
+		
+	</div>
+
+</div>
+	<div class="modal-footer"><%= f.submit "Submit Sales Pitch", class: "btn btn-success btn-lg btn-block" %></div>
+	<% end %>
       </div>
     </div>
 
