@@ -1,7 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :role => 'form' }) do |f| %>
 
   <h2>Edit Profile</h2>
   
@@ -94,11 +93,6 @@
   <div class="field">
     <%= f.label :postcode %><br />
     <%= f.text_field :postcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">

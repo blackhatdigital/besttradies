@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users/registrations' }
   get 'myjobs' => 'jobs#myjobs', :as => 'user_root'
 
 end
