@@ -7,6 +7,7 @@
 			<span class="job-joblisting-desc-name"><%= proposal.user.firstname%> <%= proposal.user.lastname%></span><br />
 			<div class="job-joblisting-desc">
 				<% if @job.user == current_user %>
+				<div class="oneliner"><%= proposal.one_liner %></div><br />
 				<%= proposal.description %><br />
 				<% end %>
 				<small>Posted on: <%= proposal.created_at.strftime("%d of %B %Y") %></small>
@@ -14,7 +15,7 @@
 		</div>
 		<div class="col-md-3 text-right">
 			<div class="job-joblisting-price">
-				<%= number_to_currency(proposal.bid, precision: 0) %> <small>per hour</small>
+				<%= number_to_currency(proposal.bid, precision: 0) %> <small><% if @job.price_per_hour %>per hour<% else %>Total<% end %></small>
 			</div>
 			<% if @job.user == current_user && @job.open == true %>
 				<%= form_for @job, method: :put do |f| %>

@@ -1,36 +1,42 @@
-<div class="row login-box">
-  <div class="container">
-    <div class="row" id="pwd-container">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <section class="login-form">
-          
-          <%= form_for(:user, html: {role: "login"}, :url => session_path(:user)) do |f| %>
-          <div class="row">
-            <div class="col-md-8 text-left">
-               <%= link_to "#{image_tag("https://s3.amazonaws.com/besttradies/besttradies.png", :size => "150x52")}".html_safe %>
-            </div>
-            <div class="col-md-4">
-              <span class="pull-right closeblur glyphicon glyphicon-remove-sign"></span>
-            </div>
-          </div>
-            <div class="field">
-              <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email" %>
-            </div>
-            <div class="field">
-              <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Password" %>
+
+<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginmodal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign into your account</h4>
+      </div>
+
+      <div class="modal-body">
+
+       
+            <div class="row">
+
+              <div class="col-md-12">
+                  
+                  <%= form_for(:user, html: {role: "login"}, :url => session_path(:user)) do |f| %>
+   
+                    <div class="field">
+                      <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email" %>
+                    </div>
+                    <div class="field">
+                      <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Password" %>
+                    </div>
+
+                    <div class="actions">
+                      <%= f.submit "Log in", class: "btn btn-lg btn-success btn-block" %>
+                    </div>
+                    <div>
+                      <a href="#">Forgot Your Password?</a> or <a href="#">Not Registered?</a>
+                    </div>
+                  <% end %>
+              </div>
+
             </div>
 
-            <div class="actions">
-              <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
-            </div>
-            <div>
-              <a href="#">Forgot Your Password?</a> or <a href="#">Not Registered?</a>
-            </div>
-          <% end %>
-        </section>  
+
       </div>
-      <div class="col-md-4"></div>
     </div>
   </div>
 </div>

@@ -1,224 +1,226 @@
 
 <div class="row bg-grey ">
 
-<div class="row job-show-title-bar">
+	<div class="row job-show-title-bar">
 		<div class="container">
 			<div class="col-md-8 job-top">
-			<h1><%= @job.name %></h1>
+				<h1><%= @job.name %></h1>
 			</div>
 			<div class="col-md-4 pull-right">
-					<div class="circle_graph">
+				<div class="circle_graph">
 					<h3>Others Requirements</h3>
 					<%= @dayscounted = (@job.end_date - @job.start_date).to_i %> <% if @dayscounted < 2 %> - 1 Day <% else %> Days <% end %>Required<br />
 					Start Date: <%= @job.start_date %><br />
 					Finish Date: <%= @job.end_date %><br />
-					</div>
+				</div>
 			</div>
 		</div>
-</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
-			<% if user_signed_in? and @job.user.avatar_file_name == nil and @job.user.firstname == nil and @job.user.bio == nil %>
+				<% if user_signed_in? and @job.user.avatar_file_name == nil and @job.user.firstname == nil and @job.user.bio == nil %>
 				<div class="update-job-profile" data-toggle="modal" data-target="#updateprofileModel">You need to build trust with the tradies... <br /><div class="update-job-profile-sml">Let's pimp your profile!</div></div>
-			<% end %>
+				<% end %>
 
-				 <% if current_user != @job.user || @job.user.avatar_file_name != nil %>
-				 <div class="job-profile-image"><%= image_tag @job.user.avatar.url(:thumb), size: "160x160" %></div>
-				 <% elsif @job.user.avatar_file_name != nil %>
-				 <div class="job-profile-image"><%= image_tag @job.user.avatar.url(:thumb), size: "160x160" %></div>
-				 <% end %> 
-				 <% if @job.user.firstname != nil %>
-				 	<div class="job-profile-details"><%= link_to @job.user.firstname, trady_path(@job.user.id) %></div>
-				 <% end %> 
-				 <% if @job.user.bio != nil %>
-					 <div class="job-profile-details"><p><i><%= @job.user.bio %></p></i></div>
-				 <% end %>
+				<% if current_user != @job.user || @job.user.avatar_file_name %>
+				<div class="job-profile-image"><%= image_tag @job.user.avatar.url(:thumb), size: "160x160" %></div>
+				<% elsif @job.user.avatar_file_name %>
+				<div class="job-profile-image"><%= image_tag @job.user.avatar.url(:thumb), size: "160x160" %></div>
+				<% end %> 
+				<% if @job.user.firstname %>
+				<div class="job-profile-details"><%= link_to @job.user.firstname, trady_path(@job.user.id) %></div>
+				<% end %> 
+				<% if @job.user.bio %>
+				<div class="job-profile-details"><p><i><%= @job.user.bio %></p></i></div>
+				<% end %>
 			</div>
 			<div class="col-md-10">
-			<div class="job-cont-med">
+				<div class="job-cont-med">
 
-			<div class="row">
+					<div class="row">
 
 						<div class="col-sm-3 text-center job-cont-med-cell">
 							<div class="job-cont-details"><div>Location</div><%= link_to @job.location, search_jobs_path(:utf8 => "true", :location => @job.location, :category => nil, :commit => "Search+Jobs") %>
 
-							</div>
 						</div>
-						<div class="col-sm-2 text-center job-cont-med-cell">
-							<div class="job-cont-details"><div><%= @proposals.count %></div> <div>Proposals</div></div>
-						</div>
-						<div class="col-sm-4 text-center job-cont-med-cell">
-							<div class="job-cont-details text-center"><div>Budget</div>
-								<% if @job.price_per_hour != nil %>
-								<span class="job-price"><%= number_to_currency(@job.price_per_hour, precision: 0) %></span><span class="job-price-sml"> PER HOUR</span>
-								<% else %>
-								<span class="job-price"><%= number_to_currency(@job.budget, precision: 0) %></span> <span class="job-price-sml">FLAT FEE</span>
-								<% end %>
-							</div>
-						</div>
-
-
-						<% if @job.open == true %>
-							<div class="col-md-3 job-open-col job-cont-med-cell">
-								<div class="job-cont-details text-center">
-									<div class="job-open">JOB OPEN</div>
-								</div>
-							</div>
-						<% else %>
-							<div class="col-md-3 job-closed-col job-cont-med-cell">
-								<div class="job-cont-details text-center">
-									<div class="job-closed">JOB CLOSED</div>
-								</div>
-							</div>
-						<% end %>
-
 					</div>
-
+					<div class="col-sm-2 text-center job-cont-med-cell">
+						<div class="job-cont-details"><div><%= @proposals.count %></div> <div>Proposals</div></div>
+					</div>
+					<div class="col-sm-4 text-center job-cont-med-cell">
+						<div class="job-cont-details text-center"><div>Budget</div>
+						<% if @job.price_per_hour != nil %>
+						<span class="job-price"><%= number_to_currency(@job.price_per_hour, precision: 0) %></span><span class="job-price-sml"> PER HOUR</span>
+						<% else %>
+						<span class="job-price"><%= number_to_currency(@job.budget, precision: 0) %></span> <span class="job-price-sml">FLAT FEE</span>
+						<% end %>
+					</div>
 				</div>
 
-				<div class="job-cont-top">
-				<div class="row">
-					<div class="col-md-8">
-						<h2>Job Description</h2>
-						<div class="job-cont-sub"><%= link_to @job.category.name, search_jobs_path(:utf8 => "true", :category => @job.category.id, :location => nil, :commit => "Search+Jobs") %> <%= time_ago_in_words(@job.created_at) + " ago" %></div>
-						<div class="job-cont-desc"><p><%= @job.description %></p></div>
-						<h2>Requirements</h2>
-						<div class="job-cont-desc"><p><%= @job.requirements %></p></div>
 
+				<% if @job.open == true %>
+				<div class="col-md-3 job-open-col job-cont-med-cell">
+					<div class="job-cont-details text-center">
+						<div class="job-open">JOB OPEN</div>
 					</div>
-					<div class="col-md-4 job-cont-details-cont">
-					
-
-			
-					
+				</div>
+				<% else %>
+				<div class="col-md-3 job-closed-col job-cont-med-cell">
+					<div class="job-cont-details text-center">
+						<div class="job-closed">JOB CLOSED</div>
 					</div>
-					</div>
-				
-				
-			
-
-				<% if @awarded_proposal.present? %>
-					<div class="job-cont-award">
-						<h2><span class="glyphicon glyphicon-ok-sign green"></span> Awarded Job</h2>
-						<div class="row">
-							<div class="col-md-2">
-							<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
-							</div>
-							<div class="col-md-7">
-								<div class="job-cont-award-name"><%= link_to @awarded_proposal.user.firstname + " " + @awarded_proposal.user.firstname, trady_path(@awarded_proposal.user.id) %></div>
-								<div class="job-cont-award-sub"><%= time_ago_in_words(@awarded_proposal.created_at) + " ago" %></div>
-								<div class="job-cont-award-desc">
-								<%= @awarded_proposal.description %>
-								</div><br />
-								
-							</div>
-							<div class="col-md-3">
-								<div class="job-cont-award-price">
-									<%= number_to_currency(@awarded_proposal.bid, precision: 0) %><br /> <small>per hour</small>
-								</div>
-							</div>
-						</div>
-					</div>
+				</div>
 				<% end %>
+
 			</div>
+
+		</div>
+
+		<div class="job-cont-top">
+			<div class="row">
+				<div class="col-md-8">
+					<h2>Job Description</h2>
+					<div class="job-cont-sub"><%= link_to @job.category.name, search_jobs_path(:utf8 => "true", :category => @job.category.id, :location => nil, :commit => "Search+Jobs") %> <%= time_ago_in_words(@job.created_at) + " ago" %></div>
+					<div class="job-cont-desc"><p><%= @job.description %></p></div>
+					<h2>Requirements</h2>
+					<div class="job-cont-desc"><p><%= @job.requirements %></p></div>
+
+				</div>
+				<div class="col-md-4 job-cont-details-cont">
+					
+
+
+					
+				</div>
+			</div>
+
+
+			
+
+			<% if @awarded_proposal.present? %>
+			<div class="job-cont-award">
+				<h2><span class="glyphicon glyphicon-ok-sign green"></span> Awarded Job</h2>
 				<div class="row">
-					<div class="col-md-12">
-						<% if @job.user != current_user && @job.open == true  %>
-						<a data-toggle="modal" data-target="#myModal">	
-							<div class="job-add-prop">
-								<div class="job-add-prop-inner">
-									<div class="job-add-prop-inner-small">There are proposals <%= @proposals.count %> so far,<br /> click here to add your proposal </div><div class="job-add-prop-inner-large"><span class="glyphicon glyphicon-plus-sign"></span></div>
-								</div>			
-							</div>
-						</a>
-						<div class="col-md-12 proposal-count">
-						<%= render 'jobs/proposal_loop' %>
-						</div>
-						<% elsif @job.user != current_user && @job.open == false %>
-						<div class="col-md-12 proposal-count">
-							<div class="text-center proposal-next-time">
-								<h4>This is what you were up against</h4>
-								<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
-							</div>
-							<%= render 'jobs/proposal_loop' %>
-						</div>
-						<% else %>
-						<div class="col-md-12 proposal-count">
-							<% if @proposals.count == 0 %>
-							<h3>There are currently no proposals on this job</h3>
-							<% end %>
-							<%= render 'jobs/proposal_loop' %>
-						</div>
-						<% end %>
+					<div class="col-md-2">
+						<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
+					</div>
+					<div class="col-md-7">
+						<div class="job-cont-award-name"><%= link_to @awarded_proposal.user.firstname + " " + @awarded_proposal.user.firstname, trady_path(@awarded_proposal.user.id) %></div>
+						<div class="job-cont-award-sub"><%= time_ago_in_words(@awarded_proposal.created_at) + " ago" %></div>
+						<div class="job-cont-award-desc">
+							<%= @awarded_proposal.description %>
+						</div><br />
 
 					</div>
+					<div class="col-md-3">
+						<div class="job-cont-award-price">
+							<%= number_to_currency(@awarded_proposal.bid, precision: 0) %><br /> <small>per hour</small>
+						</div>
+					</div>
 				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<% if @job.user != current_user && @job.open == true  %>
+				
+					<a data-toggle="modal" data-target="#myModal">	
+						<div class="job-add-prop">
+							<div class="job-add-prop-inner">
+								<div class="job-add-prop-inner-small">There are proposals <%= @proposals.count %> so far,<br /> click here to add your proposal </div><div class="job-add-prop-inner-large"><span class="glyphicon glyphicon-plus-sign"></span></div>
+							</div>			
+						</div>
+					</a>
+		
+				<div class="col-md-12 proposal-count">
+					<%= render 'jobs/proposal_loop' %>
+				</div>
+				<% elsif @job.user != current_user && @job.open == false %>
+				<div class="col-md-12 proposal-count">
+					<div class="text-center proposal-next-time">
+						<h4>This is what you were up against</h4>
+						<%= link_to "How can you improve next time?", root_path, class: "btn btn-success" %>
+					</div>
+					<%= render 'jobs/proposal_loop' %>
+				</div>
+				<% else %>
+				<div class="col-md-12 proposal-count">
+					<% if @proposals.count == 0 %>
+					<h3>There are currently no proposals on this job</h3>
+					<% end %>
+					<%= render 'jobs/proposal_loop' %>
+				</div>
+				<% end %>
+
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+</div>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade add-prop" role="dialog">
-  <div class="modal-dialog">
+	<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <span class="modal-title">Add your proposal</span>
-      </div>
-      		<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
-
-      <div class="modal-body">
-       <div class="row">
-	<div class="col-md-12 sub-prop">
-			<%= f.hidden_field :user_id, value: current_user.id %>
-			<%= f.hidden_field :owner_id, value: @job.user.id %>
-
-
-			<div class="form-group form-group-lg">
-		        <div class="input-group" data-toggle="popover" title="One Liner" data-content="Most employers will look at this line first. If it's not appealing you'll get overlooked. This is perhaps the most important part of your proposal. Make it count!" data-trigger="focus" >
-		         <%= f.text_field :one_liner, class: "form-control addjob-mtop", placeholder: "What's your one liner?", id: "validate-text", required: true %>
-		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
-		        </div>
-	   		</div>
-
-
-			<div class="form-group form-group-lg">
-		        <div class="input-group" data-toggle="popover" title="Flat Fee" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
-		        <div class="input-group-addon success">$</div>
-		         <%= f.text_field :bid, class: "form-control addjob-mtop", placeholder: "What is your flat fee bid?", id: "validate-text", required: true %>
-		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
-		        </div>
-	   		</div>
-
-			<div class="form-group form-group-lg">
-		        <div class="input-group" data-toggle="popover" title="Hourly Rate" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
-		        <div class="input-group-addon success">$</div>
-		         <%= f.text_field :hour_bid, class: "form-control addjob-mtop", placeholder: "What is your hourly rate bid?", id: "validate-text", required: true %>
-		         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
-		        </div>
-	   		</div>
-
-			<div class="input-group" data-validate="length" data-length="50" data-toggle="popover" title="It's all in the detail" data-content="This is it, it's no or never. Let your future employer know why they should choose you. Outline your experiences, work ethic, attitude etc."  data-trigger="focus">
-			<%= f.text_area :description, rows: 5, class: "form-control addjob addjob-stop", placeholder: "What's your sales pitch?",  id: "validate-text", required: true %>
-			<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<span class="modal-title">Submit your proposal</span>
 			</div>
-			
+			<%= form_for :proposal, url: job_proposals_path(@job) do |f| %>
 
-		
-		
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12 sub-prop">
+						<%= f.hidden_field :user_id, value: current_user.id %>
+						<%= f.hidden_field :owner_id, value: @job.user.id %>
+
+
+						<div class="form-group form-group-lg">
+							<div class="input-group" data-toggle="popover" title="One Liner" data-content="Most employers will look at this line first. If it's not appealing you'll get overlooked. This is perhaps the most important part of your proposal. Make it count!" data-trigger="focus" >
+								<%= f.text_field :one_liner, class: "form-control addjob-mtop", placeholder: "What's your one liner?", id: "validate-text", required: true %>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+							</div>
+						</div>
+
+						<% if @job.budget %>
+						<div class="form-group form-group-lg">
+							<div class="input-group" data-toggle="popover" title="Flat Fee" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
+								<div class="input-group-addon success">$</div>
+								<%= f.text_field :bid, class: "form-control addjob-mtop", placeholder: "What is your flat fee bid?", id: "validate-text", required: true %>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+							</div>
+						</div>
+						<% else %>
+						<div class="form-group form-group-lg">
+							<div class="input-group" data-toggle="popover" title="Hourly Rate" data-content="Try not to go over the budget price by too much. Most employers will look at price and rating." data-trigger="focus" >
+								<div class="input-group-addon success">$</div>
+								<%= f.text_field :hour_bid, class: "form-control addjob-mtop", placeholder: "What is your hourly rate bid?", id: "validate-text", required: true %>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+							</div>
+						</div>
+						<% end %>
+						<div class="input-group" data-validate="length" data-length="50" data-toggle="popover" title="It's all in the detail" data-content="This is it, it's no or never. Let your future employer know why they should choose you. Outline your experiences, work ethic, attitude etc."  data-trigger="focus">
+							<%= f.text_area :description, rows: 5, class: "form-control addjob addjob-stop", placeholder: "What's your sales pitch?",  id: "validate-text", required: true %>
+							<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+						</div>
+
+
+
+
+					</div>
+
+				</div>
+				<div class="modal-footer"><%= f.submit "Submit Sales Pitch", class: "btn btn-success btn-lg btn-block" %></div>
+				<% end %>
+			</div>
+		</div>
+
 	</div>
-
-</div>
-	<div class="modal-footer"><%= f.submit "Submit Sales Pitch", class: "btn btn-success btn-lg btn-block" %></div>
-	<% end %>
-      </div>
-    </div>
-
-  </div>
 </div>
 
 
@@ -226,74 +228,74 @@
 <!-- UPDATE PROFILE MODEL -->
 
 <div class="modal fade" id="updateprofileModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Let's Update Your Profile</h4>
-      </div>
-        
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :role => 'form' }) do |f| %>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Let's Update Your Profile</h4>
+			</div>
 
-      <div class="modal-body">
-      <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-      	<div class="form-group form-group-lg">
-	     	
-	        <div class="input-group"  >
-	         <%= f.text_field :firstname, class: "form-control addjob-mtop", placeholder: "What's your first name", id: "validate-text", required: true %>
-	         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
-	        </div>
-	    </div>
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :role => 'form' }) do |f| %>
 
-	    <div class="form-group form-group-lg">
-	     	
-	        <div class="input-group" >
-	         <%= f.text_field :lastname, class: "form-control addjob-mtop", placeholder: "What's your last name", id: "validate-text", required: true %>
-	         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
-	        </div>
-	    </div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="form-group form-group-lg">
 
-        <div class="form-group form-group-lg">
-            <!-- image-preview-filename input [CUT FROM HERE]-->
-            <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-danger image-preview-clear btn-lg" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-success btn-lg image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <%= f.file_field :avatar, accept:"image/png, image/jpeg, image/gif" %> 
-                    </div>
-                </span>
-            </div><!-- /input-group image-preview [TO HERE]--> 
-        </div>
-</div>
-<div class="col-md-2"></div>
+							<div class="input-group"  >
+								<%= f.text_field :firstname, class: "form-control addjob-mtop", placeholder: "What's your first name", id: "validate-text", required: true %>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+							</div>
+						</div>
 
+						<div class="form-group form-group-lg">
 
+							<div class="input-group" >
+								<%= f.text_field :lastname, class: "form-control addjob-mtop", placeholder: "What's your last name", id: "validate-text", required: true %>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+							</div>
+						</div>
+
+						<div class="form-group form-group-lg">
+							<!-- image-preview-filename input [CUT FROM HERE]-->
+							<div class="input-group image-preview">
+								<input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+								<span class="input-group-btn">
+									<!-- image-preview-clear button -->
+									<button type="button" class="btn btn-danger image-preview-clear btn-lg" style="display:none;">
+										<span class="glyphicon glyphicon-remove"></span> Clear
+									</button>
+									<!-- image-preview-input -->
+									<div class="btn btn-success btn-lg image-preview-input">
+										<span class="glyphicon glyphicon-folder-open"></span>
+										<span class="image-preview-input-title">Browse</span>
+										<%= f.file_field :avatar, accept:"image/png, image/jpeg, image/gif" %> 
+									</div>
+								</span>
+							</div><!-- /input-group image-preview [TO HERE]--> 
+						</div>
+					</div>
+					<div class="col-md-2"></div>
 
 
-      </div>
-      <div class="modal-footer">
-      	<div class="row">
-      	<div class="col-md-3"></div>
-      	<div class="col-md-6">
-        <%= f.submit "Save Settings", class: "btn btn-block btn-success btn-lg" %>
-          <div class="actions">
-    
-  </div>
 
-        </div>
-        <div class="col-md-3"></div>
-        </div>
-      </div>
-       <% end %>
-    </div>
-  </div>
-</div>
+
+				</div>
+				<div class="modal-footer">
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+							<%= f.submit "Save Settings", class: "btn btn-block btn-success btn-lg" %>
+							<div class="actions">
+
+							</div>
+
+						</div>
+						<div class="col-md-3"></div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
