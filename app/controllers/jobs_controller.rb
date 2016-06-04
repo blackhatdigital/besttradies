@@ -80,11 +80,8 @@ before_action :authenticate_user!, :except => [:index]
 	end
 
 	def search
-		if params[:category].blank? && params[:search].blank?
-			@jobs = Job.where(open: true).order("created_at DESC").page(params[:page]).per(25)
-		else
-			@jobs = Job.where(open: true).order("created_at DESC").page(params[:page]).per(25)
-		end
+		@jobs = Job.search(params).page(params[:page]).per(25).where(open: true).order("created_at DESC")
+	
 	end
 
 	private

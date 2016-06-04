@@ -1,42 +1,64 @@
-<div class="container">
-
-	<div class="row">
-		<div class="col-md-12">
-			<h2>Advanced Search</h2>
-				<%= form_tag search_jobs_path, method: :get do |f| %>
-					<div class="form-group col-md-5 col-sm-12">
-						<%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name), class: "form-control" %>
-					</div>
-					<div class="form-group col-md-5 col-sm-12">
-						<%= text_field_tag :location, nil, placeholder: "Search Location Eg: Brisbane", class: "form-control" %>
-					</div>
-					<div class="form-group col-md-2 col-sm-12">
-						<%= submit_tag "Search Jobs", class: "btn btn-primary" %>
-					</div>
-				<% end %>
-		</div>
+<div class="row bg-grey">
+<div class="search-top-spacer"></div>
+	<div class="container">
+		<%= render 'jobs/search_panel' %>
 	</div>
-	<div class="row">
-		<hr />
-		<div class="col-md-12">
-			<% @jobs.each do |job| %>
 
-			<div class="row">
-				<div class="col-md-12">
-					<div><%= link_to job.name, job %></div>
-					<div>Created by <%= job.user.firstname %> <%= job.user.lastname %></div>
-					<div><%= job.location %></div>
-					<div><%= job.description %></div>
-					<div><%= job.budget %></div>
-					<div>Job posted on: <%= job.created_at.strftime("%d of %B %Y") %></div>
-					<div><%= link_to "View Job", job, class: "btn btn-primary" %></div>
+	<div class="container">
+		<div class="row search_results">
+			<div class="col-md-6">
+				<h1>Latest Jobs</h1>
+			</div>
+			<div class="col-md-6 ">
+				<div class="dropdown pull-right sort_jobs">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">Sort By <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Oldest", jobs_path(sort_by: "oldest") %></li>
+						<li><%= link_to "Newest", jobs_path(sort_by: "newest") %></li>
+						<li><%= link_to "Name", jobs_path(sort_by: "name") %></li>
+					</ul>
 				</div>
 			</div>
-			<hr />
-
-			<% end %>	
 		</div>
 	</div>
+	<div class="container">
+		<div class="joblisting-header row">
+			<div class="col-md-7">Job Description</div>
+			<div class="col-md-1 text-center">Proposals</div>
+			<div class="col-md-2 text-center">Started</div>
+			<div class="col-md-2 text-center">Budget (AUD)</div>
+		</div>
 
-	<%= paginate @jobs %>
+		<% @jobs.each do |job| %>
+		
+		<div class="row joblisting">
+			<div class="col-md-12">
+				<div class="col-md-7">
+					<div class="joblisting-title"><%= link_to job.name, job %></div>
+					<div class="joblisting-subtitle ">
+						<span class="glyphicon glyphicon-map-marker"></span> <%= job.location %>
+					</div>
+					<div class="joblisting-desc"></div>
+					<div><%= h truncate(job.description, length:200) %></div>
+				</div>
+				<div class="col-md-1 text-center">
+					<div class="joblisting-proposals"><%= job.proposals.count %></div>
+				</div>
+				<div class="col-md-2 text-center">
+				<div class="joblisting-time"><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(job.created_at) + " ago" %> </div>
+				</div>
+				<div class="col-md-2 text-center">
+					<div class="joblisting-budget"><%= number_to_currency(job.budget, precision: 0)  %></div>
+				</div>
+			</div>
+		</div>
+		
+		<% end %>	
+	</div>
+
+	<div class="container">
+		<div class="row pull-right">
+		<%= paginate @jobs %>
+		</div>
+	</div>
 </div>
