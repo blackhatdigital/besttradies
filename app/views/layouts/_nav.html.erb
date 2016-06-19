@@ -37,8 +37,9 @@
           </ul>
          </li>
         <% else %>
+
         <li>
-          <%= link_to("I'm a Tradie", myjobs_path)  %>
+          <%= link_to("I'm a Tradie", edit_user_registration_path)  %>
         </li>
         <li>
           <%= link_to('Hire a Tradie', jobs_new_path)  %>
@@ -47,6 +48,7 @@
           <a class="btn btn-default btn-outline btn-circle collapsed sign_in"  data-toggle="modal" data-target="#loginmodal">Sign in</a>
         </li>
         <% end %>
+<li>
         <!--<li><span class="status_icon glyphicon glyphicon-bell nav-notification"></span></li>-->
 
       </ul>

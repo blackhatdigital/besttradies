@@ -1,11 +1,14 @@
-<div class="row bg-grey myjobs">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4"><%= render('dashmenu') %></div>
-			<div class="col-md-8">
-				<div class="myjobs-list">
-					<h1>Awarded Jobs</h1>
-					<div class="joblisting-header row">
+<div class="container">
+<%= render 'layouts/dashboard_sidebar' %>
+<div class="col-md-9 col-sm-12 nopadding">
+	<div class="inbox-head">
+		<h3>Awarded Jobs</h3>
+	</div>
+	<div class="inbox-body">
+
+
+<div class="myjobs-list">
+					<div class="joblisting-header-light row">
 						<div class="col-md-1 text-center">Status</div>
 						<div class="col-md-3 text-center">Job Title</div>
 						<div class="col-md-2 text-center">Proposals</div>
@@ -24,7 +27,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<div class="joblisting-budget text-center"><%= link_to job.name, job %></div>
+							<div class="joblisting-title-dash text-center"><%= link_to job.name, job %></div>
 
 						</div>
 						<div class="col-md-2 text-center">
@@ -34,7 +37,11 @@
 						<div class="joblisting-time"><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(job.created_at) + " ago" %> </div>
 						</div>
 						<div class="col-md-2 text-center">
-							<div class="joblisting-budget"><%= number_to_currency(job.budget, precision: 0)  %></div>
+							<div class="joblisting-budget"><% if job.price_per_hour != nil %>
+						<span class="job-price"><%= number_to_currency(job.price_per_hour, precision: 0) %></span><span class="job-price-sml"> /hour</span>
+						<% else %>
+						<span class="job-price"><%= number_to_currency(job.budget, precision: 0) %></span> <span class="job-price-sml"></span>
+						<% end %></div>
 						</div>
 						<div class="col-md-2 ">
 						<%= job.user.firstname%> <%= job.user.lastname%>
@@ -44,7 +51,9 @@
 					<% end %>	
 				</div>
 
-			</div>
-		</div>
+
 	</div>
+</div>
+</div>
+</div>
 </div>

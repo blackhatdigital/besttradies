@@ -2,22 +2,22 @@
 	font-size:2em;
 }
 
-.myjobs .job-open{
+.job-open-green{
 color:#89b777;
 font-size:1em;
-padding-top:20px;
+padding-top:30px;
 }
 
-.myjobs .job-won{
+.job-won-green{
 color:#89b777;
 font-size:1em;
-padding-top:20px;
+padding-top:30px;
 }
 
-.myjobs .job-closed{
+.job-closed-red{
 color:#c00001;
 font-size:1em;
-padding-top:20px;
+padding-top:30px;
 }
 
 /* Side menu Start */
@@ -63,4 +63,9 @@ padding-top:20px;
 	font-weight:400;
 	text-align:center;
 	padding:40px;
+}
+
+.edit_profile_image img{
+	border-radius:5px;
+	margin-bottom:20px;
 }

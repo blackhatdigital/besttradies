@@ -43,8 +43,8 @@
 						<div class="col-sm-3 text-center job-cont-med-cell">
 							<div class="job-cont-details"><div>Location</div><%= link_to @job.location, search_jobs_path(:utf8 => "true", :location => @job.location, :category => nil, :commit => "Search+Jobs") %>
 
+							</div>
 						</div>
-					</div>
 					<div class="col-sm-2 text-center job-cont-med-cell">
 						<div class="job-cont-details"><div><%= @proposals.count %></div> <div>Proposals</div></div>
 					</div>
@@ -55,8 +55,8 @@
 						<% else %>
 						<span class="job-price"><%= number_to_currency(@job.budget, precision: 0) %></span> <span class="job-price-sml">FLAT FEE</span>
 						<% end %>
+						</div>
 					</div>
-				</div>
 
 
 				<% if @job.open == true %>

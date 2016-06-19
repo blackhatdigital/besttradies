@@ -1,107 +1,219 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row bg-grey myjobs">
+  <div class="container">
+    <%= render 'layouts/dashboard_sidebar' %>
+    <div class="col-md-9 col-sm-12 nopadding">
+      <div class="inbox-head">
+        <h3>Profile Settings</h3>
+      </div>
+      <div class="inbox-body">
+        <div class="mail-option">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :role => 'form' }) do |f| %>
+          <div class="myjobs-list">
 
-  <h2>Edit Profile</h2>
-  
-  <%= image_tag @user.avatar.url(:medium) %>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6 text-center">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :role => 'form' }) do |f| %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
+                
+                <div class="edit_profile_image"><%= image_tag @user.avatar.url(:medium) %></div>
 
-    <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
+                <div class="col-md-12 form-group form-group-lg">
+                  <!-- image-preview-filename input [CUT FROM HERE]-->
+                  <div class="input-group image-preview">
+                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                    <span class="input-group-btn">
+                      <!-- image-preview-clear button -->
+                      <button type="button" class="btn btn-danger image-preview-clear btn-lg" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                      </button>
+                      <!-- image-preview-input -->
+                      <div class="btn btn-success btn-lg image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Update Profile Image</span>
+                        <%= f.file_field :avatar, accept:"image/png, image/jpeg, image/gif" %> 
+                      </div>
+                    </span>
+                  </div><!-- /input-group image-preview [TO HERE]--> 
+                </div>
 
-  <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.date_field :dob %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                <hr />
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class="input-group">
+                    <%= f.text_field :firstname, class: "form-control addjob-mtop", placeholder: "First Name", id: "validate-text", required: true %>
+                    <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-  
- <h2>Professional Profile</h2>
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class="input-group">
+                    <%= f.text_field :lastname, class: "form-control addjob-mtop", placeholder: "Last Name", id: "validate-text", required: true %>
+                    <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
 
-  <div class="field">
-    <%= f.label :skills %><br />
-    <%= f.text_area :skills %>
-  </div>
-  <div class="field">
-    <%= f.label :car %><br />
-    <%= f.check_box :car %>
-  </div>
-  <div class="field">
-    <%= f.label :equipment %><br />
-    <%= f.check_box :equipment %>
-  </div>
-  <div class="field">
-    <%= f.label :whitecard %><br />
-    <%= f.check_box :whitecard %>
-  </div>
-  <div class="field">
-    <%= f.label :abn %><br />
-    <%= f.text_field :abn %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
 
-  <h2>Location Settings</h2>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-    <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </div>
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class='input-group '>
+                    <%= f.text_field :dob, class: "form-control addjob-mtop", placeholder: "Date Of Birth", id: "from", required: true %>
+                    <span class="input-group-addon danger"><span class="glyphicon glyphicon-calendar"></span></span>
+                    
+                  </div>
+                </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+                <hr />
+                <h2>Login Details</h2>
+                <hr />
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class="input-group" data-validate="email">
+                    <%= f.text_field :email, class: "form-control addjob-mtop", placeholder: "First Name", id: "validate-text", required: true %>
+                    <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                  </div>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class="input-group">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control addjob-mtop", placeholder: "Password", id: "validate-text", required: true %>
+                    <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+
+                  </div>
+                </div>
+
+                <div class="col-md-12 form-group form-group-lg">
+                  <div class="input-group">
+                   <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control addjob-mtop", placeholder: "Repeat Password", id: "validate-text", required: true %>
+                   <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+
+                 </div>
+               </div>
+
+               
+               <hr />
+               <h2>Professional Profile</h2>
+               <hr />
+
+
+               <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group" data-validate="length" data-length="50" >
+                  <%= f.text_area :bio, class: "form-control addjob addjob-stop", placeholder: "Tell us a little about you and your profession",  id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group" data-validate="length" data-length="50" >
+                  <%= f.text_area :skills, class: "form-control addjob addjob-stop", placeholder: "Describe your most valuable attributes. E.g. Over 10 years experience, certificates, accreditations.",  id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+
+              
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <label for="default" class="btn btn-success">Do you have your own transport? <%= f.check_box :car, class: "badgebox", id: "default" %><span class="badge">&check;</span></label>
+                </div>
+              </div>
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <label for="primary" class="btn btn-success">Do you have your own equipment? <%= f.check_box :equipment, class: "badgebox", id: "primary" %><span class="badge">&check;</span></label>
+                </div>
+              </div>
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <label for="info" class="btn btn-success">Do you have a valid whitecard? <%= f.check_box :whitecard, class: "badgebox", id: "info" %><span class="badge">&check;</span></label>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :abn, class: "form-control addjob-mtop", placeholder: "What's Your ABN Number", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :lastname, class: "form-control addjob-mtop", placeholder: "What's Your Price Per Hour", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+              <h2>Location Settings</h2>
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :address, class: "form-control addjob-mtop", placeholder: "Address", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :city, class: "form-control addjob-mtop", placeholder: "City", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :state, class: "form-control addjob-mtop", placeholder: "State", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 form-group form-group-lg">
+                <div class="input-group">
+                  <%= f.text_field :postcode, class: "form-control addjob-mtop", placeholder: "Post Code", id: "validate-text", required: true %>
+                  <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+                </div>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Update", class: "btn btn-success btn-block" %>
+              </div>
+              <% end %>
+            </div>
+            <div class="col-md-3">
+
+
+              <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+</div>
+</div>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+
+
+
+

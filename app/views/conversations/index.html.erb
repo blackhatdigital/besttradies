@@ -1,0 +1,44 @@
+<div class="container">
+<%= render 'layouts/dashboard_sidebar' %>
+<div class="col-md-9 col-sm-12 nopadding">
+	<div class="inbox-head">
+		<h3>Communication Dashboard</h3>
+	</div>
+	<div class="inbox-body">
+		<div class="mail-option">
+
+		</div>
+		<table class="table table-inbox table-hover">
+			<tbody>
+				<% @conversations.each do |conversation| %>
+				<% if conversation.is_unread?(current_user) %>
+				<tr class="unread">
+					<td class="inbox-small-cells">
+						<input type="checkbox" class="mail-checkbox">
+					</td>
+					<td class="inbox-small-cells"><i class="glyphicon glyphicon-envelope"></i></td>
+					<td class="view-message  dont-show"><%= link_to conversation.subject, conversation_path(conversation) %></td>
+					<td class="view-message ">Email Body Goes Here</td>
+					<td class="view-message  text-right">UPDATED <%= time_ago_in_words(conversation.updated_at) + " ago" %></td>
+				</tr>
+				<% else %>
+				<tr class="">
+					<td class="inbox-small-cells">
+						<input type="checkbox" class="mail-checkbox">
+					</td>
+					<td class="inbox-small-cells"></td>
+					<td class="view-message dont-show"><%= link_to conversation.subject, conversation_path(conversation) %> </td>
+					<td class="view-message">Improve the search presence of WebSite</td>
+					<td class="view-message text-right">UPDATED <%= time_ago_in_words(conversation.updated_at) + " ago" %></td>
+				</tr>
+				<% end %>
+
+				<% end %>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+</div>
+</div>

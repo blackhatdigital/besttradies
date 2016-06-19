@@ -16,7 +16,19 @@ Rails.application.routes.draw do
   get '/myjobs' => 'jobs#myjobs'
   get '/myclosedjobs' => 'jobs#myclosedjobs'
   get '/myawards' => 'jobs#myawards'
-  get '/myproposals' => 'proposals#myproposals'
+
+  resources :conversations do
+    resources :messages
+
+    collection do
+      get :inbox
+      get :all, action: :index
+      get :sent
+      get :trash
+    end
+  end
+
+
 
   resources :tradies
   resources :jobs do

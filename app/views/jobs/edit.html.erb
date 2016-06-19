@@ -1,8 +1,13 @@
+<div class="row bg-grey myjobs">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"><%= render('dashmenu') %></div>
+			<div class="col-md-8">
+				<div class="myjobs-list">
+					<div class="welcome-dash">Welcome to your settings page, you can update all your details here. Please ensure that all your details are kept current in order to prevent any miscommunication.</div>
+	
 
-<div class="container">
-Edit Job
-
-	<%= form_for @job do |f| %>
+					<%= form_for @job do |f| %>
 	<div class="row ">
 		<div class="col-md-12 form-group">
 			<%= f.text_field :name, class: "form-control", placeholder: "Job Title" %>
@@ -31,5 +36,18 @@ Edit Job
 		</div>
 	</div>
 	<% end %>
+	
+			</div>
+					</div>
+					<% end %>	
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+
 

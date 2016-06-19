@@ -27,6 +27,20 @@
 -webkit-border-radius: 10px 10px 0px 0px;
 }
 
+.joblisting-header-light{
+	background-color: #1F2836;
+	padding: 20px;
+	color: #fff;
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+	height: 56px;
+	border-radius: 10px 10px 0px 0px;
+-moz-border-radius: 10px 10px 0px 0px;
+-webkit-border-radius: 10px 10px 0px 0px;
+}
+
 .joblisting {
 	border-bottom:1px solid #eee;
 	border-left:1px solid #eee;
@@ -49,9 +63,24 @@
 	
 }
 
-.joblisting-title a:hover{
+.joblisting-title-dash{
+	padding-top:25px;
+}
+
+.joblisting-title-dash a, .joblisting-title-dash a:link, .joblisting-title-dash a:visited, .joblisting-title-dash a:active{
+	font-size: 1.5em !important;
+	
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	color: #0088cf;
+	
+}
+
+.joblisting-title a:hover, .joblisting-title-dash a:hover{
 	color: #17A1E6;
 }
+
+
 
 .joblisting-subtitle{
 	font-size: .8em;

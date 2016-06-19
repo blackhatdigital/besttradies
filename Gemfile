@@ -21,7 +21,7 @@ gem 'geocoder'
 gem 'ratyrate'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
-
+gem 'mailboxer'
 
 
 group :development, :test do
