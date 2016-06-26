@@ -45,6 +45,10 @@ before_action :authenticate_user!, :except => [:index]
 		@awarded_proposal = Proposal.where(id: @job.awarded_proposal).first
 	end
 
+	def mytradies
+		@jobs = Job.where(user_id: current_user, open: false).order("created_at DESC")
+	end
+
 	def update
 		@job = Job.find(params[:id])
 		@job.update(job_params)
@@ -70,6 +74,8 @@ before_action :authenticate_user!, :except => [:index]
 		@jobawards = Job.where(award_user: current_user.id).count
 		@winrate = @jobawards.to_f / @proposalcount * 100
 	end
+
+
 
 	def myclosedjobs
 		@jobs = Job.where(user_id: current_user, open: false).order("created_at DESC")

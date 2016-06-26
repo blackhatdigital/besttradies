@@ -21,13 +21,10 @@ location = [
 	"Darwin"
 ]
 
-User.where(email: "bob@example.com").first_or_create(firstname: "Bob", lastname: "Jane", email: "bob@test.com.au", password: "pw")
-User.where(email: "bob@example.com").first_or_create(firstname: "Mike", lastname: "Bell", email: "mike@test.com.au", password: "pw")
-User.where(email: "bob@example.com").first_or_create(firstname: "Jess", lastname: "Grove", email: "jess@test.com.au", password: "pw")
-User.where(email: "bob@example.com").first_or_create(firstname: "Lis", lastname: "Edgar", email: "lis@test.com.au", password: "pw")
+User.where(email: "bob@example.com").first_or_create(firstname: "John", lastname: "Smith", email: "john@test.com.au", password: "Edgar!23")
 
-4.times do
-	User.create(email: Faker::Internet.email, password: "pw")
+1.times do
+	User.create(email: Faker::Internet.email, password: "Edgar!23")
 end	
 
 100.times do
@@ -36,6 +33,6 @@ end
 		description: Faker::Lorem.paragraph(2),
 		budget: rand(200..10000),
 		location: location.sample,
-		user_id: rand(1..4),
+		user_id: rand(1),
 		category_id: rand(1..3))
 end

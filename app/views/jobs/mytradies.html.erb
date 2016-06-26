@@ -1,0 +1,30 @@
+<div class="container">
+<%= render 'layouts/dashboard_sidebar' %>
+<div class="col-md-9 col-sm-12 nopadding">
+	<div class="inbox-head">
+		<h3>My Tradies</h3>
+	</div>
+	<div class="inbox-body">
+
+
+		<div class="myjobs-list">
+			
+
+			<% @jobs.each do |job| %>
+
+			
+			<%= link_to job.name, @job %><br />
+			<%= link_to "Contact Tradie", trady_path(job.award_user), class: "btn btn-primary" %><br />
+			
+			
+
+
+			<% end %>	
+		</div>
+
+
+	</div>
+</div>
+</div>
+</div>
+</div>
