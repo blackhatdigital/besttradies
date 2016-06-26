@@ -1,7 +1,9 @@
 @font-face {
 	font-family: 'gothambold1';
-	src: font-url('./gothambold1.eot');
-	src: local('gothambold1'), font-url('fonts/gothambold1.woff') format('woff'), font-url('fonts/gothambold1.ttf') format('truetype');
+	src: url('./gothambold1.eot');
+	src: local('gothambold1'),
+	 url('fonts/gothambold1.woff') format('woff'),
+	 url('fonts/gothambold1.ttf') format('truetype');
 }
 /* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_5903">Text with this font applied</p> */
 .fontsforweb_fontid_5903 {
