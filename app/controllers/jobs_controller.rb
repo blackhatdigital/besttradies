@@ -46,7 +46,8 @@ before_action :authenticate_user!, :except => [:index]
 	end
 
 	def mytradies
-		@jobs = Job.where(user_id: current_user, open: false).order("created_at DESC")
+		@award_user = Proposal.where(user_id: current_user).order("created_at DESC").select(:owner_id)
+		@award_users = User.where(id: @award_user).order("created_at DESC")
 	end
 
 	def update

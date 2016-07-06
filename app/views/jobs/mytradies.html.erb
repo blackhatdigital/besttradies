@@ -10,16 +10,17 @@
 		<div class="myjobs-list">
 			
 
-			<% @jobs.each do |job| %>
+			<% @award_users.each do |award| %>
+				
+				<%= image_tag award.avatar.url(:medium) %>
+				<%= award.firstname %>
+			
 
-			
-			<%= link_to job.name, @job %><br />
-			<%= link_to "Contact Tradie", trady_path(job.award_user), class: "btn btn-primary" %><br />
-			
-			
+			<%= link_to "Contact Tradie", trady_path(@award_user), class: "btn btn-primary" %><br />
 
 
 			<% end %>	
+		
 		</div>
 
 
