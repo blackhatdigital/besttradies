@@ -17,6 +17,8 @@ before_action :authenticate_user!, :except => [:index]
 		@job.save
 		redirect_to @job
 
+		JobMailer.add_job(@job).deliver
+
 	end
 
 	def edit

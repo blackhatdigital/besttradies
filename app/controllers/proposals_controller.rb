@@ -6,6 +6,8 @@ class ProposalsController < ApplicationController
 		@proposal = @job.proposals.build(proposal_params)
 		@proposal.save
 		redirect_to @proposal.job
+
+		JobMailer.new_proposal_job(@job).deliver
 	end
 
 	def proposal_params
