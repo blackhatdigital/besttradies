@@ -6,7 +6,7 @@
                               <%= image_tag current_user.avatar.url(:medium), width: "60", height: "60" %>
                           </a>
                           <div class="user-name">
-                              <h5><a href="#"><%= current_user.firstname %> <%= current_user.lastname %></a></h5>
+                              <h5><%= link_to current_user.firstname + " " + current_user.lastname, trady_path(current_user) %></h5>
                               <span><a href="mailto:<%= current_user.email %>"><%= current_user.email %></a></span>
                           </div>
                           <a class="mail-dropdown pull-right" href="<%= edit_user_registration_path %>">

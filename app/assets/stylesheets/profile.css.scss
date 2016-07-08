@@ -1,0 +1,52 @@
+.profile-image-top{
+	position:absolute;
+}
+
+.profile-image-top img{
+	border-radius:10px;
+}
+
+.profile_company{
+	text-align:left;
+	font-size:1em !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400 !important;
+	color:#17add3;
+}
+
+.profile_stats{
+	border:1px solid #e5e5e5;
+}
+
+.profile_stats_col{
+	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+	border:1px solid #e5e5e5;
+	padding:20px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:700 !important;
+	font-size:1em;
+}
+
+.profile-bg{
+	background-color:#e5e5e5;
+	-margin-top:-50px;
+}
+
+.profile-job-show-title-bar{
+	background-color:#1F2836;
+	padding:20px 0;
+}
+
+.profile-stat-glyph{
+	font-size:2.5em;
+	color:#28c072;
+	padding-top:10px;
+}
+
+.profile-rating{
+	padding-top:100px;
+}

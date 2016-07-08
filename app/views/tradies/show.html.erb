@@ -1,15 +1,31 @@
-<div class="container">
 
-<h1>Profile</h1>
-<p><%= @user.firstname%> <%= @user.lastname%></p>
-<p><%= @user.email%></p>
+<div class="row profile-job-show-title-bar">
+  <div class="container">
 
-<p><%= @user.bio%></p>
+      <div class="col-md-3  col-sm-12 job-top">
+        <div class="profile-image-top"><%= image_tag @user.avatar.url(:medium) %></div>
+      </div>
+      <div class="col-md-5  col-sm-12 job-top">
+        <h1><%= @user.firstname%> <%= @user.lastname%></h1>
+        <div class="profile_company"><%= @user.company %> | ABN: <%= @user.abn %></div>
+      </div>
+      <div class="col-md-4  col-sm-12 pull-right">
+        <div class="circle_graph">
+          <h3><i class="glyphicon glyphicon-earphone"></i> <%= @user.phone %></h3>
+          <p>Average price per hour $<%= number_with_precision(@user.price, precision: 0) %></p>
+          <p></p>
+        </div>
+      </div>
 
-<hr />
-  <div class="row">
-    <div class="small-2 large-4 columns">
-      <% if current_user %>
+  </div>
+</div>
+
+<div class="row profile-bg">
+  <div class="container">
+
+    <div class="col-md-3 profile-rating">
+
+<% if current_user %>
         Skill Rating: <%= rating_for @user, "skill" %>
         <br>
         Reliability Score: <%= rating_for @user, "reliability" %>
@@ -18,6 +34,31 @@
         <br>
         Value for Money: <%= rating_for @user, "value" %>
       <% end %>
+
     </div>
+    <div class="col-md-6">
+      <div class="row">
+
+        <div class="col-md-4 text-center profile_stats_col">EQUIPMENT<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
+        <div class="col-md-4 text-center profile_stats_col">TRANSPORT<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
+        <div class="col-md-4 text-center profile_stats_col">WHITE CARD<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
+      </div>
+      <h3><%= @user.firstname.pluralize %> Profile</h3>
+      <p><%= @user.bio %></p>   
+      <hr />
+      <h3>Located in <%= @user.city %>, <%= @user.state %></h3>
+              <iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB4h14_UYMb4giY1BeT-EZVsu1EO_jCNCY&q=<%= @user.city %>">
+</iframe>
+
+    </div>
+
+    <div class="col-md-3">
+      <h3><%= @user.firstname.pluralize %> Skillset</h3>
+      <p><%= @user.skills %></p>
+    </div>
+
+
   </div>
-</div>
+  </div>
+
+
