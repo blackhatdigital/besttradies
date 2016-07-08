@@ -30,7 +30,9 @@ class ConversationsController < ApplicationController
 	end
 
 	def new
-		@recipients = User.all - [current_user]
+		@award_user = Proposal.where(owner_id: current_user).order("created_at DESC").select(:user_id)
+		@recipients = User.where(id: @award_user).order("created_at DESC")
+
 	end
 
 	def create

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605060856) do
+ActiveRecord::Schema.define(version: 20160707232855) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160605060856) do
     t.text     "description"
     t.integer  "budget"
     t.string   "location"
-    t.boolean  "open",                default: true
+    t.boolean  "open",             default: true
     t.integer  "awarded_proposal"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -65,10 +65,6 @@ ActiveRecord::Schema.define(version: 20160605060856) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "award_user"
-    t.string   "images_file_name"
-    t.string   "images_content_type"
-    t.integer  "images_file_size"
-    t.datetime "images_updated_at"
     t.text     "requirements"
     t.integer  "timeframe"
     t.date     "start_date"
@@ -216,6 +212,8 @@ ActiveRecord::Schema.define(version: 20160605060856) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "is_tradie"
+    t.string   "phone"
+    t.string   "company"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

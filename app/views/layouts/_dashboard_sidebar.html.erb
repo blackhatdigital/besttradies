@@ -20,9 +20,10 @@
                       <ul class="inbox-nav inbox-divider">
                           <li class="active">
                               <li><%= link_to '<i class="glyphicon glyphicon-envelope"></i> Conversation Dashboard'.html_safe, inbox_conversations_path %>
-                              <span class="label label-success pull-right"><%= current_user.mailbox.inbox.unread(current_user).count %></span>
 
                           </li>
+                         <li><%= link_to '<i class="glyphicon glyphicon-wrench"></i> Connected Tradies'.html_safe, mytradies_path %></li>
+                          <li><%= link_to '<i class="glyphicon glyphicon-user"></i> Connected Employers'.html_safe, myemployers_path %></li>
                           <li><%= link_to '<i class="glyphicon glyphicon-folder-open"></i> Open Jobs'.html_safe, myjobs_path %></li>
                           <li><%= link_to '<i class="glyphicon glyphicon-folder-close"></i> Closed Jobs'.html_safe, myclosedjobs_path %></li>
                           <li><%= link_to '<i class="glyphicon glyphicon-star"></i> Awarded Jobs'.html_safe, myawards_path %></li>

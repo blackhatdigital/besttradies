@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/myjobs' => 'jobs#myjobs'
   get '/myclosedjobs' => 'jobs#myclosedjobs'
   get '/mytradies' => 'jobs#mytradies'
+  get '/myemployers' => 'jobs#myemployers'
   get '/myawards' => 'jobs#myawards'
 
   resources :conversations do

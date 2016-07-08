@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :avatar
     devise_parameter_sanitizer.for(:sign_up) << :is_tradie
+    devise_parameter_sanitizer.for(:sign_up) << :company
+    devise_parameter_sanitizer.for(:sign_up) << :phone
     devise_parameter_sanitizer.for(:sign_up) << :firstname
     devise_parameter_sanitizer.for(:sign_up) << :lastname
     devise_parameter_sanitizer.for(:sign_up) << :dob
@@ -31,6 +33,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :price
 
     devise_parameter_sanitizer.for(:account_update) << :avatar
+    devise_parameter_sanitizer.for(:account_update) << :company
+    devise_parameter_sanitizer.for(:account_update) << :phone
     devise_parameter_sanitizer.for(:account_update) << :firstname
     devise_parameter_sanitizer.for(:account_update) << :lastname
     devise_parameter_sanitizer.for(:account_update) << :dob

@@ -8,13 +8,13 @@
 	<div class="inbox-body">
 		<div class="mail-option">
 <h1>New Conversation</h1>
-
-<h3>I am <%= current_user.firstname %></h3>
-
+<% if @recipients.exists? %>
 <%= form_tag conversations_path, method: :post do %>
 
 <div>
+	
 	<%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :firstname) %>
+
 </div>
 
 <div>
@@ -28,6 +28,11 @@
 <%= submit_tag %>
 
 <% end %>
+
+<% else %>
+	Sorry you can only message tradies that you have awarded a job to. You can not message the employer unless they instigate the conversation first.
+<% end %>
+
 
 		</div>
 		

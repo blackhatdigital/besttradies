@@ -46,6 +46,11 @@ before_action :authenticate_user!, :except => [:index]
 	end
 
 	def mytradies
+		@award_user = Proposal.where(owner_id: current_user).order("created_at DESC").select(:user_id)
+		@award_users = User.where(id: @award_user).order("created_at DESC")
+	end
+
+	def myemployers
 		@award_user = Proposal.where(user_id: current_user).order("created_at DESC").select(:owner_id)
 		@award_users = User.where(id: @award_user).order("created_at DESC")
 	end

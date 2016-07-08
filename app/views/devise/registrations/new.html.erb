@@ -8,23 +8,36 @@
       <%= devise_error_messages! %>
 
 
+      <div class="form-group form-group-lg">
+        <div class="input-group" data-toggle="popover" title="Do you have a company name?" data-content="People will remember you by your company." data-trigger="focus" >
+         <%= f.text_field :company, class: "form-control addjob-mtop", placeholder: "The world's best company", id: "validate-text", required: true %>
+         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+        </div>
+      </div>
 
       <div class="form-group form-group-lg">
-        <div class="input-group" data-toggle="popover" title="Make it attractive" data-content="This is the first thing tradies will see. So make it descriptive" data-trigger="focus" >
+        <div class="input-group" data-toggle="popover" title="Keep it real!" data-content="Please ensure this is a valid email. This is the email we will be sending important information to." data-trigger="focus" >
          <%= f.email_field :email, class: "form-control addjob-mtop", placeholder: "email address", id: "validate-text", required: true %>
          <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
         </div>
       </div>
 
       <div class="form-group form-group-lg">
-        <div class="input-group" data-toggle="popover" title="Make it attractive" data-content="This is the first thing tradies will see. So make it descriptive" data-trigger="focus" >
+        <div class="input-group" data-toggle="popover" title="We need your phone number?" data-content="We use this phone number to connect you with your prospects." data-trigger="focus" >
+         <%= f.text_field :phone, class: "form-control addjob-mtop", placeholder: "0400000000", id: "validate-text", required: true %>
+         <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
+        </div>
+      </div>
+
+      <div class="form-group form-group-lg">
+        <div class="input-group" data-toggle="popover" title="Stronger the better" data-content="USe a mix of capital letters and symbols. That will keep you safe." data-trigger="focus" >
          <%= f.password_field :password, autocomplete: "off", class: "form-control addjob-mtop", placeholder: "Password", id: "validate-text", required: true %>
          <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
         </div>
       </div>
 
       <div class="form-group form-group-lg">
-        <div class="input-group" data-toggle="popover" title="Make it attractive" data-content="This is the first thing tradies will see. So make it descriptive" data-trigger="focus" >
+        <div class="input-group" data-toggle="popover" title="One more time" data-content="You've done it before, let's see it again. Just to make sure you typed it all correctly." data-trigger="focus" >
          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control addjob-mtop", placeholder: "Repeat Password", id: "validate-text", required: true %>
          <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
         </div>
