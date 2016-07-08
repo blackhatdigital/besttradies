@@ -47,7 +47,11 @@
 				<div class="joblisting-time"><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(job.created_at) + " ago" %> </div>
 				</div>
 				<div class="col-md-2 text-center">
-					<div class="joblisting-budget"><%= number_to_currency(job.budget, precision: 0)  %></div>
+					<div class="joblisting-budget"><% if job.price_per_hour != nil %>
+						<span class="job-price"><%= number_to_currency(job.price_per_hour, precision: 0) %></span><span class="job-price-sml"> /hour</span>
+						<% else %>
+						<span class="job-price"><%= number_to_currency(job.budget, precision: 0) %></span> <span class="job-price-sml"></span>
+						<% end %></div>
 				</div>
 			</div>
 		</div>

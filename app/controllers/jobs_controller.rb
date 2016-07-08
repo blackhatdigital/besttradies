@@ -60,7 +60,7 @@ before_action :authenticate_user!, :except => [:index]
 	def update
 		@job = Job.find(params[:id])
 		@job.update(job_params)
-		redirect_to @job
+		redirect_to mytradies_path
 		if current_user != @job.user
 			flash[:error] = "You are not the owner of this job"
 			redirect_to @job

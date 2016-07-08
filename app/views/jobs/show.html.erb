@@ -106,7 +106,7 @@
 						<%= image_tag @awarded_proposal.user.avatar.url(:thumb), size: "80" %>
 					</div>
 					<div class="col-md-7">
-						<div class="job-cont-award-name"><%= link_to @awarded_proposal.user.firstname + " " + @awarded_proposal.user.firstname, trady_path(@awarded_proposal.user.id) %></div>
+						<div class="job-cont-award-name"><%= link_to @awarded_proposal.user.firstname + " " + @awarded_proposal.user.lastname, trady_path(@awarded_proposal.user.id) %></div>
 						<div class="job-cont-award-sub"><%= time_ago_in_words(@awarded_proposal.created_at) + " ago" %></div>
 						<div class="job-cont-award-desc">
 							<%= @awarded_proposal.description %>
