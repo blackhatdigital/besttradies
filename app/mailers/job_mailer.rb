@@ -11,9 +11,21 @@ class JobMailer < ApplicationMailer
     mail to: job.user.email, subject: "Thanks for adding a new job"
   end
 
+  def add_job_tradies(tradies, job, nearbys)
+
+    @tradies = tradies
+    @job = job
+    @nearbys = nearbys
+    mail to: tradies.map(&:email).uniq, subject: "New Job Available"
+  end
+
+
+
   def new_proposal_job(job)
     @job = job
     mail to: job.user.email, subject: "Thanks for submitting your proposal"
   end
+
+  
   
 end

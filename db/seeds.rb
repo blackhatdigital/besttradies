@@ -6,33 +6,29 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.where(name: "Electrician").first_or_create(name: "Electrician")
-Category.where(name: "Construction").first_or_create(name: "Construction")
-Category.where(name: "Chippy").first_or_create(name: "Chippy")
-Category.where(name: "Plumber").first_or_create(name: "Plumber")
-Category.where(name: "Bricky").first_or_create(name: "Bricky")
+Category.where(name: "Air Conditioning").first_or_create(name: "Air Conditioning")
+Category.where(name: "Bathrooms").first_or_create(name: "Bathrooms")
+Category.where(name: "Building").first_or_create(name: "Building")
+Category.where(name: "Carpenting").first_or_create(name: "Carpenting")
+Category.where(name: "Cleaning").first_or_create(name: "Cleaning")
+Category.where(name: "Concreting").first_or_create(name: "Concreting")
+Category.where(name: "Electrical").first_or_create(name: "Electrical")
+Category.where(name: "Engineering").first_or_create(name: "Engineering")
+Category.where(name: "Fencing").first_or_create(name: "Fencing")
+Category.where(name: "Removalists").first_or_create(name: "Removalists")
+Category.where(name: "Glazier").first_or_create(name: "Glazier")
+Category.where(name: "Guttering").first_or_create(name: "Guttering")
+Category.where(name: "Handyman").first_or_create(name: "Handyman")
+Category.where(name: "Kitchens").first_or_create(name: "Kitchens")
+Category.where(name: "Landscapers").first_or_create(name: "Landscapers")
+Category.where(name: "Painters").first_or_create(name: "Painters")
+Category.where(name: "Pest Control").first_or_create(name: "Pest Control")
+Category.where(name: "Plastering").first_or_create(name: "Plastering")
+Category.where(name: "Plumbers").first_or_create(name: "Plumbers")
+Category.where(name: "Pool Building").first_or_create(name: "Pool Building")
+Category.where(name: "Rendering").first_or_create(name: "Rendering")
+Category.where(name: "Roofing").first_or_create(name: "Roofing")
+Category.where(name: "Steel Fixing").first_or_create(name: "Steel Fixing")
+Category.where(name: "Tilers").first_or_create(name: "Tilers")
+Category.where(name: "Other Bits and Bobs").first_or_create(name: "Other Bits and Bobs")
 
-location = [
-	"Gold Coast",
-	"Brisbane",
-	"Sydney",
-	"Melbourne",
-	"Perth",
-	"Darwin"
-]
-
-User.where(email: "bob@example.com").first_or_create(firstname: "John", lastname: "Smith", email: "john@test.com.au", password: "Edgar!23")
-
-1.times do
-	User.create(email: Faker::Internet.email, password: "Edgar!23")
-end	
-
-100.times do
-	sleep 0.25
-	Job.create(name: Faker::Name.title,
-		description: Faker::Lorem.paragraph(2),
-		budget: rand(200..10000),
-		location: location.sample,
-		user_id: rand(1),
-		category_id: rand(1..3))
-end

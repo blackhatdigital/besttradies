@@ -20,7 +20,7 @@
                         <div class="addjob-step">1</div><%= f.label "What trade do you need?" %>
 
                         <div class="input-group">
-                        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: "form-control addjob-mtop", placeholder: "Select a trade", id: "validate-text", required: true  %>
+                        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {:prompt => "Category"}, class: "form-control addjob-mtop", id: "validate-text", required: true  %>
                          <span class="input-group-addon danger"><span class="glyphicon glyphicon-pencil"></span></span>
                         </div>
 

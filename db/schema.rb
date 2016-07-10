@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707232855) do
+ActiveRecord::Schema.define(version: 20160709223434) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer "job_id"
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 20160707232855) do
     t.boolean  "is_tradie"
     t.string   "phone"
     t.string   "company"
+    t.integer  "category"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

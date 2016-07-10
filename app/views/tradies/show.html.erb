@@ -39,11 +39,29 @@
     <div class="col-md-6">
       <div class="row">
 
-        <div class="col-md-4 text-center profile_stats_col">EQUIPMENT<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
-        <div class="col-md-4 text-center profile_stats_col">TRANSPORT<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
-        <div class="col-md-4 text-center profile_stats_col">WHITE CARD<br /><i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i></div>
+        <div class="col-md-4 text-center profile_stats_col">EQUIPMENT<br />
+        <% if @user.equipment %>
+        <i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i>
+        <% else %>
+        <i class="glyphicon glyphicon-remove-sign profile-stat-glyph-fail"></i>
+        <% end %>
+        </div>
+        <div class="col-md-4 text-center profile_stats_col">TRANSPORT<br />
+        <% if @user.car %>
+        <i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i>
+        <% else %>
+        <i class="glyphicon glyphicon-remove-sign profile-stat-glyph-fail"></i>
+        <% end %>
+        </div>
+        <div class="col-md-4 text-center profile_stats_col">WHITE CARD<br />
+        <% if @user.whitecard %>
+        <i class="glyphicon glyphicon-ok-sign profile-stat-glyph"></i>
+        <% else %>
+        <i class="glyphicon glyphicon-remove-sign profile-stat-glyph-fail"></i>
+        <% end %>
+        </div>
       </div>
-      <h3><%= @user.firstname.pluralize %> Profile</h3>
+      <h3>Profile of <%= @user.firstname %></h3>
       <p><%= @user.bio %></p>   
       <hr />
       <h3>Located in <%= @user.city %>, <%= @user.state %></h3>
@@ -53,7 +71,7 @@
     </div>
 
     <div class="col-md-3">
-      <h3><%= @user.firstname.pluralize %> Skillset</h3>
+      <h3>Skillsets for <%= @user.firstname.pluralize %></h3>
       <p><%= @user.skills %></p>
     </div>
 

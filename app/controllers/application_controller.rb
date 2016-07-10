@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+
+
     devise_parameter_sanitizer.for(:sign_up) << :avatar
+    devise_parameter_sanitizer.for(:sign_up) << :category
     devise_parameter_sanitizer.for(:sign_up) << :is_tradie
     devise_parameter_sanitizer.for(:sign_up) << :company
     devise_parameter_sanitizer.for(:sign_up) << :phone
@@ -33,6 +36,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :price
 
     devise_parameter_sanitizer.for(:account_update) << :avatar
+    devise_parameter_sanitizer.for(:account_update) << :category
     devise_parameter_sanitizer.for(:account_update) << :company
     devise_parameter_sanitizer.for(:account_update) << :phone
     devise_parameter_sanitizer.for(:account_update) << :firstname

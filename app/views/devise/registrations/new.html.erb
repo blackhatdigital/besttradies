@@ -46,13 +46,13 @@
 <div class="marg-auto">  
 <h3>I want to</h3>     
     <div class="btn-group" data-toggle="buttons">   
-      <label class="btn btn-signup active btn-lg">
-        <%= f.radio_button :is_tradie, "0", autocomplete: "off", checked: "checked" %>
+      <label class="btn btn-signup  btn-lg">
+        <%= f.radio_button :is_tradie, "0", autocomplete: "off"  %>
         HIRE
       </label>
 
-      <label class="btn btn-signup btn-lg ">
-      <%= f.radio_button :is_tradie, "1", autocomplete: "off" %>
+      <label class="btn btn-signup btn-lg active">
+      <%= f.radio_button :is_tradie, "1", autocomplete: "off", checked: "checked"  %>
         WORK
       </label>
     </div>

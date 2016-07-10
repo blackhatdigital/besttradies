@@ -4,7 +4,7 @@
 	<div class="row job-show-title-bar">
 		<div class="container">
 			<div class="col-md-8 job-top">
-				<h1><%= @job.name %></h1>
+				<h1><%= @job.name %> </h1>
 			</div>
 			<div class="col-md-4 pull-right">
 				<div class="circle_graph">
@@ -16,11 +16,14 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
 				<% if user_signed_in? and @job.user.avatar_file_name == nil and @job.user.firstname == nil and @job.user.bio == nil %>
+				<% if current_user == @job.user %>
 				<div class="update-job-profile" data-toggle="modal" data-target="#updateprofileModel">You need to build trust with the tradies... <br /><div class="update-job-profile-sml">Let's pimp your profile!</div></div>
+				<% end %>
 				<% end %>
 
 				<% if current_user != @job.user || @job.user.avatar_file_name %>

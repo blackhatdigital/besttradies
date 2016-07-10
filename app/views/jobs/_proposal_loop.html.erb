@@ -4,7 +4,7 @@
 			<%= image_tag proposal.user.avatar.url(:thumb), size: "50" %>
 		</div>
 		<div class="col-md-8">
-			<span class="job-joblisting-desc-name"><%= proposal.user.firstname%> <%= proposal.user.lastname%></span><br />
+			<span class="job-joblisting-desc-name"><%= link_to proposal.user.firstname + " " + proposal.user.lastname, trady_path(proposal.user.id) %></span><br />
 			<div class="job-joblisting-desc">
 				<% if @job.user == current_user %>
 				<div class="oneliner"><%= proposal.one_liner %></div><br />

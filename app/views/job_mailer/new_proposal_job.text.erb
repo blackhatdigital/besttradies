@@ -1,5 +1,11 @@
 Hi <%= @job.user.firstname %>
 
-You have just received a proposal from <%= @job.user.firstname %>
+Congratulations You have just received a new proposal for <%= @job.name %>
 
-From Best Tradies
+You can choose to award this tradie as the winner, or wait for more proposals to come in, it's totally up to you. Once you award a winner, you'll be taken to your <%= link_to "connect tradies", mytradies_path %> page on your dashboard. Here you'll be able contact the tradie directly. Alternatively you could wait for the tradie to contact you.
+
+Click the button below to view your new proposal
+
+<%=link_to "View Proposal", @job %>
+
+BestTradies.com.au

@@ -5,6 +5,11 @@ before_action :authenticate_user!, :except => [:index]
 	def index
 
 		@jobs = Job.where(open: true).order_list(params[:sort_by]).page(params[:page]).per(25)
+
+		@category = Category.all
+
+		@location = @jobs.select(:location).uniq
+
 	end
 
 	def new
@@ -12,12 +17,20 @@ before_action :authenticate_user!, :except => [:index]
 	end
 
 	def create
+
 		@job = Job.new(job_params)
+
 		@job.user = current_user
 		@job.save
-		redirect_to @job
-
-		JobMailer.add_job(@job).deliver
+		if @job.save
+			redirect_to @job	
+		
+			@tradies = User.where(category: @job.category_id).all
+			JobMailer.add_job_tradies(@tradies, @job, @nearbys).deliver
+			
+			JobMailer.add_job(@job).deliver
+			
+		end
 
 	end
 
@@ -45,6 +58,7 @@ before_action :authenticate_user!, :except => [:index]
 		@job = Job.find(params[:id])
 		@proposals = @job.proposals.order("created_at DESC")
 		@awarded_proposal = Proposal.where(id: @job.awarded_proposal).first
+
 	end
 
 	def mytradies
@@ -95,7 +109,8 @@ before_action :authenticate_user!, :except => [:index]
 
 	def search
 		@jobs = Job.search(params).page(params[:page]).per(25).where(open: true).order("created_at DESC")
-	
+		@job = Job.where(open: true)
+		@location = @job.select(:location).uniq
 	end
 
 	private
