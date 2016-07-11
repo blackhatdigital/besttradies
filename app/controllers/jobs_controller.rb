@@ -4,7 +4,11 @@ before_action :authenticate_user!, :except => [:index]
 
 	def index
 
+		@jobs = Job.where(open: true).order_list(params[:sort_by]).page(params[:page]).per(25)
 
+		@category = Category.all
+
+		@location = @jobs.select(:location).uniq
 
 	end
 
