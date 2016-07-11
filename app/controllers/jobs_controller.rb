@@ -8,7 +8,7 @@ before_action :authenticate_user!, :except => [:index]
 
 		@category = Category.all
 
-		@location = @jobs.select(:location).uniq
+		@location = @jobs.select(:location)
 
 	end
 
@@ -110,7 +110,7 @@ before_action :authenticate_user!, :except => [:index]
 	def search
 		@jobs = Job.search(params).page(params[:page]).per(25).where(open: true).order("created_at DESC")
 		@job = Job.where(open: true)
-		@location = @job.select(:location).uniq
+		@location = @job.select(:location)
 	end
 
 	private
