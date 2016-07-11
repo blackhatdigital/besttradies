@@ -93,4 +93,7 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
+config.assets.compile = ['*.js', '*.css']
+config.active_support.deprecation = :silence
+
 end
