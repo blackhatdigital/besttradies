@@ -1,6 +1,14 @@
 $(document).ready(function () {
 
+    $form.on('submit', function(e) {
+        // Prevent form submission and repeat clicks
+        e.preventDefault();
+        $submit.attr('disabled', 'disabled');
 
+        
+
+    });
+    
 $(function() {
 
       $('[data-toggle="popover"]').popover({

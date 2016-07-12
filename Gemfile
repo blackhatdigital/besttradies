@@ -22,7 +22,7 @@ gem 'ratyrate'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 gem 'mailboxer'
-
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug'

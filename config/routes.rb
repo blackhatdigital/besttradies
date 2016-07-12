@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
- 
+  
+  post 'mytradies' => 'twilio#call'
+  post 'mytradies/connect' => 'twilio#connect'
+
   root 'pages#home'
   
   get 'pages/home'
