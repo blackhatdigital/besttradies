@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Besttradies
   class Application < Rails::Application
-    config.serve_static_assets = true
+    config.serve_static_files = true
 config.assets.compile = ['*.js', '*.css']
 config.active_support.deprecation = :silence
     # Settings in config/environments/* take precedence over those specified here.
