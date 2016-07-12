@@ -1,13 +1,10 @@
 $(document).ready(function () {
 // Execute JavaScript on page load
+
 $(function() {
-    $('#phoneNumber').intlTelInput({
-        responsiveDropdown: true,
-        autoFormat: true,
-        utilsScript: 'assets/intl-phone/libphonenumber/build/utils.js'
-    });
+
     var $form = $('#contactform'),
-        $submit = $('#contactform input[type=submit]');
+        $submit = $('#submitform');
 
     // Intercept form submission
     $form.on('submit', function(e) {
@@ -17,7 +14,7 @@ $(function() {
 
         // Submit the form via ajax
         $.ajax({
-            url:'/call',
+            url:'localhost:3000',
             method:'POST',
             data: $form.serialize()
         }).done(function(data) {
@@ -31,7 +28,7 @@ $(function() {
     });
 });
 
-    
+
 $(function() {
 
       $('[data-toggle="popover"]').popover({

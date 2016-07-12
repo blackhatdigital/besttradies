@@ -13,15 +13,20 @@ class TwilioController < ApplicationController
   @@twilio_number = ENV['TWILIO_NUMBER']
 
 
+
   # Handle a POST from our web form and connect a call via REST API
   def call
+
+      @full_phone = current_user.phone
+      @partial_phone = @full_phone.last(-1)
+      @connected_number = "+61" + @partial_phone
 
       @client = Twilio::REST::Client.new @@twilio_sid, @@twilio_token
       # Connect an outbound call to the number submitted
       @call = @client.calls.create(
         :from => @@twilio_number,
-        :to => '61423678869',
-        :url => 'besttradies.herokuapp.com/mytradies/connect' # Fetch instructions from this URL when the call connects
+        :to => @connected_number,
+        :url => 'http://localhost:3000/voice' # Fetch instructions from this URL when the call connects
       )
 
 
@@ -29,13 +34,13 @@ class TwilioController < ApplicationController
 
   # This URL contains instructions for the call that is connected with a lead
   # that is using the web form.
-  def connect
+  def voice
     # Our response to this request will be an XML document in the "TwiML"
     # format. Our Ruby library provides a helper for generating one
     # of these documents
     response = Twilio::TwiML::Response.new do |r|
-      r.Say 'If this were a real click to call implementation, you would be connected to an agent at this point.', :voice => 'alice'
-      r.Dial '+61755024911'
+           r.Say 'If this were a real click to call implementation, you would be connected to an agent at this point.', :voice => 'alice'
+           r.Dial '+61755024911'
     end
     render text: response.text
   end
