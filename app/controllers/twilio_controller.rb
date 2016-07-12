@@ -4,7 +4,7 @@ class TwilioController < ApplicationController
   # Before we allow the incoming request to connect, verify
   # that it is a Twilio request
   before_filter :authenticate_twilio_request, :only => [
-    :connect
+    :voice
   ]
 
   # Define our Twilio credentials as instance variables for later use
@@ -26,7 +26,7 @@ class TwilioController < ApplicationController
       @call = @client.calls.create(
         :from => @@twilio_number,
         :to => @connected_number,
-        :url => 'http://localhost:3000/voice' # Fetch instructions from this URL when the call connects
+        :url => 'https://oreillys.com.au/voice.xml' # Fetch instructions from this URL when the call connects
       )
 
 
@@ -40,7 +40,7 @@ class TwilioController < ApplicationController
     # of these documents
     response = Twilio::TwiML::Response.new do |r|
            r.Say 'If this were a real click to call implementation, you would be connected to an agent at this point.', :voice => 'alice'
-           r.Dial '+61755024911'
+           r.Dial @award.phone  #This needs a variable to talk to see jobs controller mytradies
     end
     render text: response.text
   end
