@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   
   post 'mytradies' => 'twilio#call'
+  post 'voice' => 'twilio#voice'
   get '/voice' => 'twilio#voice'
 
 
